@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../images/enactus-logo-gray.png";
+import Logo from "../images/autosouq-logo.jpeg";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -38,7 +38,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="https://www.instagram.com/enactusvitc"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e] "
+                        className="hover:underline text-gray-300 hover:text-lightOrange "
                         target="_blank"
                       >
                         Instagram
@@ -47,7 +47,7 @@ function Footer() {
                     <li>
                       <a
                         href="https://in.linkedin.com/company/enactusvitc"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="_blank"
                       >
                         LinkedIn
@@ -63,7 +63,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/privacy-policy"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
                       >
                         Privacy Policy
@@ -72,7 +72,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/terms-of-service"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
                       >
                         Terms &amp; Conditions
@@ -81,7 +81,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/shipping-policy"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
                       >
                         Shipping Policy
@@ -90,7 +90,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/refund-policy"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
                       >
                         Refund Policy
@@ -99,7 +99,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/contact-us"
-                        className="hover:underline text-gray-300 hover:text-[#fecf3e]"
+                        className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
                       >
                         Contact Us
@@ -112,12 +112,14 @@ function Footer() {
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
               <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
-                © 2023{" "}
+                © {
+                  new Date().getFullYear()
+                } {" "}
                 <a
-                  href="https://www.enactusvitc.com/"
-                  className="hover:underline text-[#f5cb5c] hover:text-[#f5cb5c]"
+                  href="https://www.autosouq.com/"
+                  className="hover:underline text-black hover:text-lightOrange"
                 >
-                  Enactus™
+                  AutoSouq
                 </a>
                 . All Rights Reserved.
               </span>

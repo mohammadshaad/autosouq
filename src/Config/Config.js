@@ -5,14 +5,14 @@ import "firebase/auth";
 import "firebase/database";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDAiTP56QK78wMBCW361FiZJwa4EpfyF8M",
-  authDomain: "autosouq-d2907.firebaseapp.com",
-  databaseURL: "https://autosouq-d2907-default-rtdb.firebaseio.com",
-  projectId: "autosouq-d2907",
-  storageBucket: "autosouq-d2907.appspot.com",
-  messagingSenderId: "52394311323",
-  appId: "1:52394311323:web:b42f9a929d381febad903e",
-  measurementId: "G-5QHTNNT1NZ",
+  apiKey: "AIzaSyAn985OSJZM2_6dqh0jdIjMh4otodIo0hw",
+  authDomain: "autosouq-4de0c.firebaseapp.com",
+  databaseURL: "https://autosouq-4de0c-default-rtdb.firebaseio.com",
+  projectId: "autosouq-4de0c",
+  storageBucket: "autosouq-4de0c.appspot.com",
+  messagingSenderId: "141757253112",
+  appId: "1:141757253112:web:c225c34a12afc33434c20d",
+  // measurementId: "G-5QHTNNT1NZ",
 };
 
 firebase.initializeApp(firebaseConfig);

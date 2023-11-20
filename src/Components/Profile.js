@@ -3,7 +3,7 @@ import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 import "firebase/database";
-import logo from "../images/enactus-logo-gray.png";
+import logo from "../images/autosouq-logo.jpeg";
 import { auth, db } from "../Config/Config";
 import { Link } from "react-router-dom";
 

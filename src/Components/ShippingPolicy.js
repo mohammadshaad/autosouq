@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../images/enactus-logo-gray.png";
+import Logo from "../images/autosouq-logo.jpeg";
 
 function ShippingPolicy() {
   return (

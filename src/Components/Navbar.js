@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../images/enactus-logo-gray.png";
+import logo from "../images/autosouq-logo.jpeg";
 import { Link } from "react-router-dom";
 import { auth, db } from "../Config/Config";
 import { Icon } from "react-icons-kit";
@@ -65,7 +65,7 @@ export const Navbar = () => {
     <div className="navbox shadow-xl">
       <div className="mobile-nav">
         <Link to="/" className="logo">
-          <img src={logo} alt="Enactus Logo" />
+          <img src={logo} alt="AutoSouq Logo" />
         </Link>
 
         <div className="menu-buttons" onClick={handleMenu}>
@@ -99,7 +99,7 @@ export const Navbar = () => {
 
       <div className="desktop-nav-menu">
         <Link to="/" className="logo">
-          <img src={logo} alt="Enactus Logo" />
+          <img src={logo} alt="AutoSouq Logo" />
         </Link>
       </div>
 
@@ -119,14 +119,14 @@ export const Navbar = () => {
               <span className="no-of-products">{totalQty}</span>
             </Link>
           </span> */}
-          <span className="flex items-center justify-center ml-3">
+          {/* <span className="flex items-center justify-center ml-3">
             <Link to="cart" className="navlink cart-icon absolute">
               <Icon icon={cart} className="cart" size={20}/>
               <span className="no-of-products relative bottom-2 px-1">
                 {totalQty}
               </span>
             </Link>
-          </span>
+          </span> */}
           <span>
             <button className="logout-btn" onClick={handleLogout}>
               Logout
@@ -136,22 +136,22 @@ export const Navbar = () => {
       )}
       {!currentUser && isOpen && (
         <div className="rightside">
-          <span className="flex items-center justify-center ">
+          {/* <span className="flex items-center justify-center ">
             <Link to="cart" className="navlink cart-icon absolute">
               <Icon icon={cart} className="cart" />
               <span className="no-of-products relative bottom-2 px-1">
                 {totalQty}
               </span>
             </Link>
-          </span>
-          <span>
+          </span> */}
+          {/* <span>
             <Link to="login" className="navlink login">
               LOGIN
             </Link>
-          </span>
+          </span> */}
           <span>
-            <Link to="signup" className="navlink sign-up">
-              SIGN UP
+            <Link to="login" className="navlink sign-up">
+              LOGIN
             </Link>
           </span>
         </div>

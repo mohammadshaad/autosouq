@@ -4,7 +4,7 @@ import { auth, db } from "../Config/Config";
 import { CartContext } from "../Global/CartContext";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import logo from "../images/enactus-logo-gray.png";
+import logo from "../images/autosouq-logo.jpeg";
 import firebase from "firebase/app";
 import "firebase/database";
 import { Link } from "react-router-dom";
