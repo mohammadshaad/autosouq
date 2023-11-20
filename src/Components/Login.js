@@ -3,6 +3,7 @@ import { auth, firebase } from "../Config/Config";
 import { Link } from "react-router-dom";
 import LoginImg from "../images/login.png";
 import GoogleImg from "../images/google.png";
+import FacebookImg from "../images/facebook.png";
 
 export const Login = (props) => {
   const [email, setEmail] = useState("");
@@ -24,12 +25,23 @@ export const Login = (props) => {
 
   const googleSignIn = () => {
     const provider = new firebase.auth.GoogleAuthProvider();
-    auth.signInWithPopup(provider)
+    auth
+      .signInWithPopup(provider)
       .then(() => {
         props.history.push("/");
       })
       .catch((err) => setError(err.message));
   };
+
+  const facebookSignIn = () => {
+    const provider = new firebase.auth.FacebookAuthProvider();
+    auth
+      .signInWithPopup(provider)
+      .then(() => {
+        props.history.push("/");
+      })
+      .catch((err) => setError(err.message));
+  }
 
   return (
     <div className="login-container">
@@ -62,20 +74,35 @@ export const Login = (props) => {
               LOGIN
             </button>
           </form>
-          {/* <button onClick={googleSignIn} className="google-login-btn">
-            <img src={GoogleImg} alt="" className="google-login-img" />
-            Login with Google
-          </button> */}
+          <div className="flex md:flex-row flex-col gap-4 items-center justify-center w-full ">
+            <button
+              onClick={googleSignIn}
+              className="google-login-btn w-full md:w-auto"
+            >
+              <img src={GoogleImg} alt="" className="google-login-img" />
+              Sign up with Google
+            </button>
+            <button
+              onClick={facebookSignIn}
+              className="google-login-btn w-full md:w-auto"
+            >
+              <img src={FacebookImg} alt="" className="google-login-img" />
+              Sign up with Facebook
+            </button>
+          </div>
           {error && <span className="error-msg">{error}</span>}
           <br />
           <span className="register-here-title md:-mt-20">
-            Don't have an account? 
-            <Link to="signup" className="register-here">{" "} Register Here</Link>
+            Don't have an account?
+            <Link to="signup" className="register-here">
+              {" "}
+              Register Here
+            </Link>
           </span>
         </div>
-        <div className="login-image">
+        {/* <div className="login-image">
           <img src={LoginImg} alt="" border="0" className="" />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -573,15 +573,17 @@ body {
   width: 100%;
   height: 100vh;
   padding: 40px;
+  background-color: var(--black);
 }
 
 .login-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: 20px;
   width: 100%;
   height: 100%;
   padding: 10px;
+  background-color: var(--black);
 }
 
 .login-titles {
@@ -655,6 +657,7 @@ body {
 
 .login-fields {
   background-image: url("./images/login-bg.jpg");
+  /* background-color: var(--white); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -708,13 +711,13 @@ input:-webkit-autofill {
 .login-btn {
   padding: 14px 20px;
   border-radius: 100px;
-  color: var(--black);
+  color: var(--white);
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
   outline: none;
-  border: 1px solid var(--white);
-  background-color: var(--white);
+  /* border: 1px solid var(--white); */
+  background-color: var(--black);
   box-shadow: 0px 0px 2px var(--lighOrange);
   transition: all;
   width: 100%;
@@ -723,7 +726,7 @@ input:-webkit-autofill {
 
 .login-btn:hover {
   background-color: transparent;
-  box-shadow: 2px 4px var(--black);
+  box-shadow: 2px 4px var(--lighOrange);
   color: var(--black);
   border: 1px solid var(--black);
   transition: all;
@@ -763,7 +766,7 @@ input:-webkit-autofill {
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    height: 100%;
+    height: 100vh;
   }
   .login-wrapper {
     display: flex;
