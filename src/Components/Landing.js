@@ -1,20 +1,20 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { Navbar } from "./Navbar";
 import { Hero } from "./Hero";
 import { About } from "./About";
 import { Products } from "./Products";
-import { useHistory } from "react-router-dom";
-import { auth } from "../Config/Config";
 import Footer from "./Footer";
 
 export const Landing = ({ user }) => {
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedFilter, setSelectedFilter] = useState("");
 
   return (
     <div>
       <Navbar user={user} />
-      <Hero />
+      <Hero setSearchTerm={setSearchTerm} setSelectedFilter={setSelectedFilter} />
       <About />
-      <Products />
+      <Products searchTerm={searchTerm} selectedFilter={selectedFilter} />
       <Footer />
     </div>
   );

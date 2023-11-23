@@ -51,7 +51,7 @@ export const Products = () => {
     <div className="products-main-container">
       <div className="products-wrapper">
         <h1>Products</h1>
-        <div className="filters">
+        {/* <div className="filters">
           <input
             type="text"
             placeholder="Search products"
@@ -69,6 +69,57 @@ export const Products = () => {
             <option value="Malar">Malar</option>
             <option value="Pooranya">Pooranya</option>
           </select>
+        </div> */}
+        <div className="flex  items-start justify-center gap-4">
+          <div className="w-full">
+            <input
+              type="text"
+              placeholder="Search products"
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className=" md:pr-40 pl-4 text-black focus:text-black py-2 border  border-gray-300 rounded-full w-full focus:outline-none focus:border-blue-500"
+            />
+          </div>
+
+          <div className="flex items-center text-xs md:text-sm justify-start gap-4 ">
+            <select
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+            >
+              <option value="">Make</option>
+              <option value="Toyota">Toyota</option>
+              <option value="Ferrari">Ferrari</option>
+            </select>
+            <select
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+            >
+              <option value="">Type</option>
+              <option value="SUV">SUV</option>
+              <option value="Sedan">Sedan</option>
+              <option value="Hatchback">Hatchback</option>
+            </select>
+            <select
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+            >
+              <option value="">Kilometers</option>
+              <option value="0-10,000">0-10,000</option>
+              <option value="10,000-20,000">10,000-20,000</option>
+              <option value="20,000-30,000">20,000-30,000</option>
+              <option value="30,000-40,000">30,000-40,000</option>
+              <option value="40,000-50,000">40,000-50,000</option>
+            </select>
+            <select
+              onChange={(e) => setSelectedFilter(e.target.value)}
+              className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+            >
+              <option value="">City</option>
+              <option value="Bangalore">Bangalore</option>
+              <option value="Chennai">Chennai</option>
+              <option value="Delhi">Delhi</option>
+              <option value="Mumbai">Mumbai</option>
+            </select>
+          </div>
         </div>
         <div className="products-container">
           {filteredProducts.length === 0 ? (
