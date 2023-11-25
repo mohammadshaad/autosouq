@@ -106,7 +106,7 @@ export const Navbar = () => {
       {currentUser && isOpen && (
         <div className="rightside no-underline ">
           <Link to="/profile" className="group flex items-center justify-center flex-row  flex-shrink-0 gap-2 no-underline underline-offset-4">
-            <Link to="/profile" className="group-hover:opacity-60 duration-200 transition-all navlink current-user text-xs no-underline">
+            <Link to="/profile" className="group-hover:opacity-60 duration-200 transition-all navlink current-user text-xs no-underline appearance-none text-black">
               {currentUser}
             </Link>
             <span className="">
@@ -127,11 +127,11 @@ export const Navbar = () => {
               </span>
             </Link>
           </span> */}
-          <span>
-            <button className="logout-btn" onClick={handleLogout}>
+          {/* <span>
+            <button className="login" onClick={handleLogout}>
               Logout
             </button>
-          </span>
+          </span> */}
         </div>
       )}
       {!currentUser && isOpen && (

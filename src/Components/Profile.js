@@ -6,6 +6,8 @@ import "firebase/database";
 import logo from "../images/autosouq-logo.jpeg";
 import { auth, db } from "../Config/Config";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import Loading from "./Loading";
 
 // Check if Firebase app is not already initialized
 if (!firebase.apps.length) {
@@ -36,6 +38,9 @@ function Profile() {
   const [editedUserMobile, setEditedUserMobile] = useState("");
   const [editedUserEmail, setEditedUserEmail] = useState("");
   const [editedUserAddress, setEditedUserAddress] = useState("");
+
+
+
 
   useEffect(() => {
     // Set up an observer on the Auth object
@@ -77,7 +82,7 @@ function Profile() {
         if (doc.exists) {
           setUserData(doc.data());
         } else {
-          console.log("No such document!");
+          <Loading />;
         }
       })
       .catch((error) => {
@@ -116,6 +121,16 @@ function Profile() {
       .catch((error) => {
         console.error("Error updating user details:", error);
       });
+  };
+
+  const history = useHistory();
+
+
+  // handle logout
+  const handleLogout = () => {
+    auth.signOut().then(() => {
+      history.push("/");
+    });
   };
 
   return (
@@ -192,9 +207,15 @@ function Profile() {
         {/* Button to toggle edit mode */}
         <button
           onClick={toggleEditMode}
-          className="mt-4 bg-[#f5cb5c] px-4 py-2 pay-btn !w-full"
+          className="mt-4 bg-[#f5cb5c] px-4 py-2 login-btn !w-full"
         >
           {isEditMode ? "Cancel" : "Edit Details"}
+        </button>
+        <button
+          onClick={handleLogout}
+          className="mt-4  px-4 py-2 login !w-full"
+        >
+          Logout
         </button>
       </div>
       <div className="return-to-home w-full flex items-center justify-center mt-10">
