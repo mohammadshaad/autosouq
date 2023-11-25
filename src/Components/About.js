@@ -31,15 +31,10 @@ export const About = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam a
-            quibusdam, voluptatum, quod, quia voluptatem voluptas quos
-            quibusdam, voluptatum, quod, quia voluptatem voluptas quos
-            voluptatum voluptas quos voluptatum voluptas quos voluptatum
-            voluptas quos voluptatum voluptas quos voluptatum voluptas quos
-            voluptatum voluptas quos voluptatum voluptas quos voluptatum
-            voluptas quos voluptatum voluptas quos voluptatum voluptas quos
-            voluptatum voluptas quos voluptatum voluptas quos voluptatum
-            voluptas quos voluptatum voluptas quos voluptatum voluptas quos
+            Tired of endlessly scoring multiple sites for the perfect car? We've
+            got you covered. AutoSouq seamlessly consolidates listings from
+            major sites in the GCC, ensuring that your dream car is just a few
+            clicks away.
           </motion.p>
         </div>
       </div>

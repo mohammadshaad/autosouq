@@ -95,6 +95,13 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               <ArrowLongRightIcon className="h-6 w-6 text-white group-hover:text-white transition-all duration-200 group-hover:translate-x-4" />
             </motion.button>
           </Link>
+
+          <div className="mt-4 font-light text-gray-400 text-xl max-w-xl">
+            Tired of endlessly scoring multiple sites for the perfect car? We've
+            got you covered. AutoSouq seamlessly consolidates listings from
+            major sites in the GCC, ensuring that your dream car is just a few
+            clicks away.
+          </div>
         </div>
       </div>
     </motion.div>

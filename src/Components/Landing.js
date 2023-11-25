@@ -13,7 +13,7 @@ export const Landing = ({ user }) => {
     <div>
       <Navbar user={user} />
       <Hero setSearchTerm={setSearchTerm} setSelectedFilter={setSelectedFilter} />
-      <About />
+      {/* <About /> */}
       <Products searchTerm={searchTerm} selectedFilter={selectedFilter} />
       <Footer />
     </div>
