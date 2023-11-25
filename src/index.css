@@ -894,7 +894,7 @@ input:-webkit-autofill {
   width: 300px;
   height: auto;
   margin: 20px;
-  border: 1px solid var(--lighOrange);
+  border: 1px solid var(--black);
   border-radius: 20px;
   padding: 5px;
   background-color: transparent;
@@ -911,7 +911,7 @@ input:-webkit-autofill {
 }
 
 .product-card:hover {
-  box-shadow: 10px 10px var(--black);
+  box-shadow: 10px 10px var(--lighOrange);
   transition: all;
   transition-duration: 0.2s;
 }
@@ -929,7 +929,6 @@ input:-webkit-autofill {
 }
 
 .products-container .product-card .product-name {
-  display: block;
   width: 100%;
   color: var(--black);
   margin-top: 5px;

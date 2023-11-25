@@ -13,7 +13,10 @@ export const ProductsContextProvider = ({ children }) => {
         ProductName: doc.data().ProductName,
         ProductPrice: doc.data().ProductPrice,
         ProductImg: doc.data().ProductImg,
-        ProductType: doc.data().ProductType // Add the new field
+        ProductType: doc.data().ProductType,
+        ProductMake: doc.data().ProductMake,
+        ProductCity: doc.data().ProductCity, 
+        ProductRating: doc.data().ProductRating,
       }));
 
       // console.log(productsData); // Debug statement
