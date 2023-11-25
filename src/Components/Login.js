@@ -80,14 +80,14 @@ export const Login = (props) => {
               className="google-login-btn w-full md:w-auto"
             >
               <img src={GoogleImg} alt="" className="google-login-img" />
-              Sign up with Google
+              Login with Google
             </button>
             <button
               onClick={facebookSignIn}
               className="google-login-btn w-full md:w-auto"
             >
               <img src={FacebookImg} alt="" className="google-login-img" />
-              Sign up with Facebook
+              Login with Facebook
             </button>
           </div>
           {error && <span className="error-msg">{error}</span>}

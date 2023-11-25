@@ -11,32 +11,71 @@ export const Signup = (props) => {
   const [password, setPassword] = useState("");
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
+  const [profileImage, setProfileImage] = useState(null);
   const [error, setError] = useState("");
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setProfileImage(file);
+  };
 
   const signup = (e) => {
     e.preventDefault();
     auth
       .createUserWithEmailAndPassword(email, password)
       .then((cred) => {
-        db.collection("SignedUpUsersData")
-          .doc(cred.user.uid)
-          .set({
-            Name: name,
-            Email: email,
-            Password: password,
-            Mobile: mobile,
-            Address: address,
-          })
-          .then(() => {
-            setName("");
-            setEmail("");
-            setPassword("");
-            setMobile("");
-            setAddress("");
-            setError("");
-            props.history.push("/login");
-          })
-          .catch((err) => setError(err.message));
+        const storageRef = firebase
+          .storage()
+          .ref(`profile_images/${cred.user.uid}`);
+
+        if (profileImage) {
+          storageRef.put(profileImage).then((snapshot) => {
+            snapshot.ref.getDownloadURL().then((downloadURL) => {
+              db.collection("SignedUpUsersData")
+                .doc(cred.user.uid)
+                .set({
+                  Name: name,
+                  Email: email,
+                  Password: password,
+                  Mobile: mobile,
+                  Address: address,
+                  ProfileImage: downloadURL,
+                })
+                .then(() => {
+                  setName("");
+                  setEmail("");
+                  setPassword("");
+                  setMobile("");
+                  setAddress("");
+                  setProfileImage(null);
+                  setError("");
+                  props.history.push("/login");
+                })
+                .catch((err) => setError(err.message));
+            });
+          });
+        } else {
+          // If no profile image selected
+          db.collection("SignedUpUsersData")
+            .doc(cred.user.uid)
+            .set({
+              Name: name,
+              Email: email,
+              Password: password,
+              Mobile: mobile,
+              Address: address,
+            })
+            .then(() => {
+              setName("");
+              setEmail("");
+              setPassword("");
+              setMobile("");
+              setAddress("");
+              setError("");
+              props.history.push("/login");  
+            })
+            .catch((err) => setError(err.message));
+        }
       })
       .catch((err) => setError(err.message));
   };
@@ -96,6 +135,8 @@ export const Signup = (props) => {
             </h5>
           </div>
           <form autoComplete="off" className="login-form" onSubmit={signup}>
+            <input type="file" accept="image/*" onChange={handleImageChange} />
+
             <input
               type="text"
               className="email-input text-black placeholder-black focus:text-black"
@@ -146,11 +187,17 @@ export const Signup = (props) => {
             </button>
           </form>
           <div className="flex md:flex-row flex-col gap-4 items-center justify-center w-full ">
-            <button onClick={googleSignup} className="google-login-btn w-full md:w-auto">
+            <button
+              onClick={googleSignup}
+              className="google-login-btn w-full md:w-auto"
+            >
               <img src={GoogleImg} alt="" className="google-login-img" />
               Sign up with Google
             </button>
-            <button onClick={facebookSignup} className="google-login-btn w-full md:w-auto">
+            <button
+              onClick={facebookSignup}
+              className="google-login-btn w-full md:w-auto"
+            >
               <img src={FacebookImg} alt="" className="google-login-img" />
               Sign up with Facebook
             </button>

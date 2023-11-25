@@ -12,6 +12,7 @@ export const Navbar = () => {
   const history = useHistory();
   const { totalQty } = useContext(CartContext);
   const [currentUser, setCurrentUser] = useState(null);
+  const [profileImageUrl, setProfileImageUrl] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -31,6 +32,7 @@ export const Navbar = () => {
             const userData = snapshot.data();
             if (userData) {
               setCurrentUser(userData.Name);
+              setProfileImageUrl(userData.ProfileImage);
               console.log(
                 "Hey " +
                   userData.Name +
@@ -48,6 +50,7 @@ export const Navbar = () => {
       } else {
         // No user is signed in.
         setCurrentUser(null);
+        setProfileImageUrl(null);
       }
     });
 
@@ -68,7 +71,7 @@ export const Navbar = () => {
 
   return (
     <div className="navbox shadow-xl">
-      <div className="mobile-nav">
+      {/* <div className="mobile-nav">
         <Link to="/" className="logo">
           <img src={logo} alt="AutoSouq Logo" />
         </Link>
@@ -100,17 +103,18 @@ export const Navbar = () => {
             </svg>
           )}
         </div>
-      </div>
+      </div> */}
 
-      <div className="desktop-nav-menu">
-        <Link to="/" className="logo">
-          <img src={logo} alt="AutoSouq Logo" />
-        </Link>
-      </div>
+      <div className="flex items-center justify-center w-full">
+        <div className="desktop-nav-menu ">
+          <Link to="/" className="logo  ">
+            <img src={logo} alt="AutoSouq Logo" />
+          </Link>
+        </div>
 
-      {currentUser && isOpen && (
-        <div className="rightside no-underline ">
-          {/* <Link to="/profile" className="group flex items-center justify-center flex-row  flex-shrink-0 gap-2 no-underline underline-offset-4">
+        {currentUser && (
+          <div className="relative rightside no-underline  ">
+            {/* <Link to="/profile" className="group flex items-center justify-center flex-row  flex-shrink-0 gap-2 no-underline underline-offset-4">
             <Link to="/profile" className="group-hover:opacity-60 duration-200 transition-all navlink current-user text-xs no-underline appearance-none text-black">
               {currentUser}
             </Link>
@@ -119,65 +123,73 @@ export const Navbar = () => {
             </span>
           </Link> */}
 
-          <div className="relative inline-block text-left">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 focus:outline-none focus:ring focus:border-blue-300"
-              onClick={toggleDropdown}
-            >
-              {/* You can replace the icon with an image or any other representation */}
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                className="h-6 w-6"
+            <div className=" flex items-center justify-end w-full">
+              <button
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-full text-white hover:text-gray-300 focus:outline-none "
+                onClick={toggleDropdown}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3M4 4h16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm4 8h6m-3 3v3"
-                />
-              </svg>
-            </button>
+                {profileImageUrl ? ( // Display the user's profile image if available
+                  <img
+                    src={profileImageUrl}
+                    alt="Profile"
+                    className="h-12 w-12 rounded-full"
+                  />
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    className="h-6 w-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3M4 4h16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm4 8h6m-3 3v3"
+                    />
+                  </svg>
+                )}
+              </button>
 
-            {/* Dropdown */}
-            {isDropdownOpen && (
-              <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
-                <div
-                  className="py-1"
-                  role="menu"
-                  aria-orientation="vertical"
-                  aria-labelledby="options-menu"
-                >
-                  {/* Dropdown items */}
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
+              {/* Dropdown */}
+              {isDropdownOpen && (
+                <div className="origin-top-right absolute top-14 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                  <div
+                    className="py-1"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby="options-menu"
                   >
-                    Profile
-                  </a>
-                  <a
-                    href="#"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    role="menuitem"
-                  >
-                    Sign out
-                  </a>
+                    {/* Dropdown items */}
+                    <a
+                      href="/profile"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                      role="menuitem"
+                    >
+                      Profile
+                    </a>
+                    <a
+                      href="#"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  hover:text-lightOrange"
+                      role="menuitem"
+                      onClick={handleLogout}
+                    >
+                      Log out
+                    </a>
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
 
-          {/* <span>
+            {/* <span>
             <Link to="cart" className="navlink">
               <Icon icon={cart} className="cart" />
               <span className="no-of-products">{totalQty}</span>
             </Link>
           </span> */}
-          {/* <span className="flex items-center justify-center ml-3">
+            {/* <span className="flex items-center justify-center ml-3">
             <Link to="cart" className="navlink cart-icon absolute">
               <Icon icon={cart} className="cart" size={20}/>
               <span className="no-of-products relative bottom-2 px-1">
@@ -185,16 +197,16 @@ export const Navbar = () => {
               </span>
             </Link>
           </span> */}
-          {/* <span>
+            {/* <span>
             <button className="login" onClick={handleLogout}>
               Logout
             </button>
           </span> */}
-        </div>
-      )}
-      {!currentUser && isOpen && (
-        <div className="rightside">
-          {/* <span className="flex items-center justify-center ">
+          </div>
+        )}
+        {!currentUser && isOpen && (
+          <div className="  flex items-center justify-end w-full">
+            {/* <span className="flex items-center justify-center ">
             <Link to="cart" className="navlink cart-icon absolute">
               <Icon icon={cart} className="cart" />
               <span className="no-of-products relative bottom-2 px-1">
@@ -202,18 +214,19 @@ export const Navbar = () => {
               </span>
             </Link>
           </span> */}
-          {/* <span>
+            {/* <span>
             <Link to="login" className="navlink login">
               LOGIN
             </Link>
           </span> */}
-          <span>
-            <Link to="login" className="navlink sign-up">
-              LOGIN
-            </Link>
-          </span>
-        </div>
-      )}
+            <span className="">
+              <Link to="login" className="navlink sign-up">
+                LOGIN
+              </Link>
+            </span>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

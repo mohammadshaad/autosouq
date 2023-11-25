@@ -28,25 +28,18 @@ function Profile() {
   const [currentUserEmail, setCurrentUserEmail] = useState(null);
   const [currentUserMobile, setCurrentUserMobile] = useState(null);
   const [currentUserAddress, setCurrentUserAddress] = useState(null);
+  const [profileImageUrl, setProfileImageUrl] = useState(null);
   const [isSignedIn, setIsSignedIn] = useState(false);
-
-  // State for controlling the edit mode
   const [isEditMode, setIsEditMode] = useState(false);
-
-  // State for form inputs
   const [editedUserName, setEditedUserName] = useState("");
   const [editedUserMobile, setEditedUserMobile] = useState("");
   const [editedUserEmail, setEditedUserEmail] = useState("");
   const [editedUserAddress, setEditedUserAddress] = useState("");
-
-
-
+  const [newProfileImage, setNewProfileImage] = useState(null); // New state for new profile image
 
   useEffect(() => {
-    // Set up an observer on the Auth object
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
-        // User is signed in.
         db.collection("SignedUpUsersData")
           .doc(user.uid)
           .get()
@@ -58,6 +51,7 @@ function Profile() {
               setCurrentUserEmail(userData.Email);
               setCurrentUserMobile(userData.Mobile);
               setCurrentUserAddress(userData.Address);
+              setProfileImageUrl(userData.ProfileImage);
             }
           });
       } else {
@@ -65,57 +59,61 @@ function Profile() {
         setCurrentUserEmail(null);
         setCurrentUserMobile(null);
         setCurrentUserAddress(null);
+        setProfileImageUrl(null);
       }
     });
 
-    // Clean up the observer when the component unmounts
     return () => unsubscribe();
   }, []);
 
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    db.collection("users")
-      .doc("user1")
-      .get()
-      .then((doc) => {
-        if (doc.exists) {
-          setUserData(doc.data());
-        } else {
-          <Loading />;
-        }
-      })
-      .catch((error) => {
-        console.log("Error getting document:", error);
-      });
-  }, []);
-
-  // Function to handle edit mode toggle
   const toggleEditMode = () => {
     setIsEditMode(!isEditMode);
   };
 
-  // Function to handle form submission
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
-    // Update user details in the database
-    db.collection("SignedUpUsersData")
-      .doc(auth.currentUser.uid)
-      .update({
+    // If a new profile image is selected, upload it to Firebase Storage
+    if (newProfileImage) {
+      const storageRef = firebase.storage().ref();
+      const imageRef = storageRef.child(
+        `profile_images/${auth.currentUser.uid}`
+      );
+      imageRef.put(newProfileImage).then(() => {
+        // Get the updated image URL
+        imageRef.getDownloadURL().then((url) => {
+          // Update user details in the database
+          updateUserData({
+            Name: editedUserName,
+            Email: editedUserEmail,
+            Mobile: editedUserMobile,
+            Address: editedUserAddress,
+            ProfileImage: url, // Updated profile image URL
+          });
+        });
+      });
+    } else {
+      // Update user details in the database without changing the profile image
+      updateUserData({
         Name: editedUserName,
         Email: editedUserEmail,
         Mobile: editedUserMobile,
         Address: editedUserAddress,
-      })
-      .then(() => {
-        // Update state with new details
-        setCurrentUserName(editedUserName);
-        setCurrentUserEmail(editedUserEmail);
-        setCurrentUserMobile(editedUserMobile);
-        setCurrentUserAddress(editedUserAddress);
+        ProfileImage: profileImageUrl, // Keep the existing profile image URL
+      });
+    }
+  };
 
-        // Exit edit mode
+  const updateUserData = (data) => {
+    db.collection("SignedUpUsersData")
+      .doc(auth.currentUser.uid)
+      .update(data)
+      .then(() => {
+        setCurrentUserName(data.Name);
+        setCurrentUserEmail(data.Email);
+        setCurrentUserMobile(data.Mobile);
+        setCurrentUserAddress(data.Address);
+        setProfileImageUrl(data.ProfileImage);
         setIsEditMode(false);
       })
       .catch((error) => {
@@ -123,22 +121,41 @@ function Profile() {
       });
   };
 
-  const history = useHistory();
-
-
-  // handle logout
   const handleLogout = () => {
-    auth.signOut().then(() => {
-      history.push("/");
-    });
+    auth.signOut();
   };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
-      <div className="bg-white rounded-lg shadow-lg p-8">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
         {isEditMode ? (
-          // Edit Mode Form
-          <form onSubmit={handleFormSubmit} className="flex flex-col space-y-4">
+          <form onSubmit={handleFormSubmit} className="space-y-4">
+            <div className="flex items-center">
+              {newProfileImage ? (
+                <img
+                  src={URL.createObjectURL(newProfileImage)}
+                  alt="New Profile"
+                  className="rounded-full h-16 w-16 mr-4"
+                />
+              ) : (
+                <img
+                  src={profileImageUrl}
+                  alt="Profile"
+                  className="rounded-full h-16 w-16 mr-4"
+                />
+              )}
+              <div>
+                <label className="cursor-pointer text-blue-500">
+                  Change Profile Image
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => setNewProfileImage(e.target.files[0])}
+                    className="hidden"
+                  />
+                </label>
+              </div>
+            </div>
             <label className="flex flex-col">
               <span className="text-gray-700">Name:</span>
               <input
@@ -176,7 +193,7 @@ function Profile() {
             </label>
             <button
               type="submit"
-              className="px-4 py-2 pay-btn !w-full focus:outline-none focus:shadow-outline "
+              className="px-4 py-2 login-btn !w-full focus:outline-none focus:shadow-outline "
             >
               Save
             </button>
@@ -184,39 +201,105 @@ function Profile() {
         ) : (
           // Display Mode
           <>
-            <h2 className="text-2xl font-bold text-gray-800">
-              <span className="text-gray-600 mr-1">Name:</span>
+            <div className="flex items-center justify-center mb-10">
+              {profileImageUrl && (
+                <div className="border-4 border-lightOrange rounded-full">
+                  <img
+                    src={profileImageUrl}
+                    alt="Profile"
+                    className="rounded-full h-32 w-32  "
+                  />
+                </div>
+              )}
+            </div>
+
+            <h2 className="text-2xl font-bold text-gray-800 w-full text-center">
+              <span className="text-gray-600 mr-1"></span>
               {currentUserName}
             </h2>
-            <p className="text-gray-800 mt-4">
-              <span className="text-gray-600 mr-1">Mobile:</span>
-              {currentUserMobile}</p>
-            <div className="mt-4">
-              <p className="text-gray-800">
-                <span className="text-gray-600 mr-1">Email:</span>
-                {currentUserEmail}</p>
+            <p className="text-gray-800 mt-4 flex items-center justify-start">
+              <span className="text-gray-600 mr-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3"
+                  />
+                </svg>
+              </span>
+              {currentUserMobile}
+            </p>
+            <div className="mt-4 flex items-center justify-start">
+              <p className="text-gray-800 flex items-center justify-start">
+                <span className="text-gray-600 mr-1">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      d="M16.5 12a4.5 4.5 0 11-9 0 4.5 4.5 0 019 0zm0 0c0 1.657 1.007 3 2.25 3S21 13.657 21 12a9 9 0 10-2.636 6.364M16.5 12V8.25"
+                    />
+                  </svg>
+                </span>
+                {currentUserEmail}
+              </p>
             </div>
-            <div className="mt-4">
-              <p className="text-gray-800">
-                <span className="text-gray-600 mr-1">Address:</span>
-                {currentUserAddress}</p>
+            <div className="">
+              <p className="text-gray-800 flex items-center justify-start">
+                <span className="text-gray-600 mr-1 flex items-center justify-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                    />
+                  </svg>
+                </span>
+                <div className="flex items-center justify-center">
+                  {currentUserAddress ? (
+                    currentUserAddress
+                  ) : (
+                    <p className="text-gray-500 italic mt-3">Address not provided</p>
+                  )}
+                </div>
+              </p>
             </div>
           </>
         )}
 
-        {/* Button to toggle edit mode */}
-        <button
-          onClick={toggleEditMode}
-          className="mt-4 bg-[#f5cb5c] px-4 py-2 login-btn !w-full"
-        >
-          {isEditMode ? "Cancel" : "Edit Details"}
-        </button>
-        <button
-          onClick={handleLogout}
-          className="mt-4  px-4 py-2 login !w-full"
-        >
-          Logout
-        </button>
+        <div className="flex justify-between mt-4">
+          <button
+            onClick={toggleEditMode}
+            className="px-4 py-2 login !w-1/2 mr-2"
+          >
+            {isEditMode ? "Cancel" : "Edit Details"}
+          </button>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 login !w-1/2 ml-2"
+          >
+            Logout
+          </button>
+        </div>
       </div>
       <div className="return-to-home w-full flex items-center justify-center mt-10">
         <Link
