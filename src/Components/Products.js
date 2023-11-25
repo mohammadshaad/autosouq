@@ -75,7 +75,7 @@ export const Products = () => {
             <option value="Pooranya">Pooranya</option>
           </select>
         </div> */}
-        <div className="flex flex-wrap w-full  items-start justify-center md:justify-start gap-4">
+        {/* <div className="flex flex-wrap w-full  items-start justify-center md:justify-start gap-4">
           <div className="w-full">
             <input
               type="text"
@@ -144,7 +144,7 @@ export const Products = () => {
               Clear Filters
             </button>
           </div>
-        </div>
+        </div> */}
         <div className="products-container mt-8">
           {filteredProducts.length === 0 ? (
             <div className="text-gray-400 font-light text-2xl flex-col flex items-center justify-center">

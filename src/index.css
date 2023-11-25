@@ -52,7 +52,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 30px;
+  padding: 4px 30px;
 }
 
 .navbox .logo {
@@ -63,7 +63,7 @@ body {
 }
 
 .navbox .logo img {
-  width: 100px;
+  width: 140px;
 }
 
 .navbox .rightside {
@@ -385,7 +385,6 @@ body {
   background-image: url("./images/bg.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
   color: white;
 }
 

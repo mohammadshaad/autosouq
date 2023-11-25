@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../images/autosouq-logo.jpeg";
+import logo from "../images/autosouq-logo.svg";
 import { Link } from "react-router-dom";
 import { auth, db } from "../Config/Config";
 import { Icon } from "react-icons-kit";
@@ -13,6 +13,11 @@ export const Navbar = () => {
   const { totalQty } = useContext(CartContext);
   const [currentUser, setCurrentUser] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
 
   useEffect(() => {
     // Set up an observer on the Auth object
@@ -31,7 +36,7 @@ export const Navbar = () => {
                   userData.Name +
                   "! 👋 Welcome to Enactus VITC E-Commerce Site ❤️ " +
                   "You are logged in now!" +
-                  "Your email : " + 
+                  "Your email : " +
                   userData.Email +
                   "Your mobile : " +
                   userData.Mobile +
@@ -105,14 +110,67 @@ export const Navbar = () => {
 
       {currentUser && isOpen && (
         <div className="rightside no-underline ">
-          <Link to="/profile" className="group flex items-center justify-center flex-row  flex-shrink-0 gap-2 no-underline underline-offset-4">
+          {/* <Link to="/profile" className="group flex items-center justify-center flex-row  flex-shrink-0 gap-2 no-underline underline-offset-4">
             <Link to="/profile" className="group-hover:opacity-60 duration-200 transition-all navlink current-user text-xs no-underline appearance-none text-black">
               {currentUser}
             </Link>
             <span className="">
               <Icon icon={user} className="group-hover:opacity-60 text-black duration-200 transition-all user" size={23} />
             </span>
-          </Link>
+          </Link> */}
+
+          <div className="relative inline-block text-left">
+            <button
+              type="button"
+              className="inline-flex items-center justify-center p-2 rounded-md text-white hover:text-gray-300 focus:outline-none focus:ring focus:border-blue-300"
+              onClick={toggleDropdown}
+            >
+              {/* You can replace the icon with an image or any other representation */}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                className="h-6 w-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3M4 4h16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm4 8h6m-3 3v3"
+                />
+              </svg>
+            </button>
+
+            {/* Dropdown */}
+            {isDropdownOpen && (
+              <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div
+                  className="py-1"
+                  role="menu"
+                  aria-orientation="vertical"
+                  aria-labelledby="options-menu"
+                >
+                  {/* Dropdown items */}
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    Profile
+                  </a>
+                  <a
+                    href="#"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    role="menuitem"
+                  >
+                    Sign out
+                  </a>
+                </div>
+              </div>
+            )}
+          </div>
+
           {/* <span>
             <Link to="cart" className="navlink">
               <Icon icon={cart} className="cart" />

@@ -15,7 +15,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
 
   return (
     <motion.div
-      className="landing__container"
+      className="landing__container py-20"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
