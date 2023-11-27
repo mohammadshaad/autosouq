@@ -173,7 +173,7 @@ function Profile() {
                 type="text"
                 value={editedUserName}
                 onChange={(e) => setEditedUserName(e.target.value)}
-                className="px-3 py-2 border rounded focus:outline-none focus:shadow-outline focus:border-blue-500"
+                className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
             </label>
             <label className="flex flex-col">
@@ -182,7 +182,7 @@ function Profile() {
                 type="text"
                 value={editedUserMobile}
                 onChange={(e) => setEditedUserMobile(e.target.value)}
-                className="px-3 py-2 border rounded focus:outline-none focus:shadow-outline focus:border-blue-500"
+                className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
             </label>
             <label className="flex flex-col">
@@ -191,7 +191,7 @@ function Profile() {
                 type="email"
                 value={editedUserEmail}
                 onChange={(e) => setEditedUserEmail(e.target.value)}
-                className="px-3 py-2 border rounded focus:outline-none focus:shadow-outline focus:border-blue-500"
+                className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
             </label>
             <label className="flex flex-col">
@@ -199,7 +199,7 @@ function Profile() {
               <textarea
                 value={editedUserAddress}
                 onChange={(e) => setEditedUserAddress(e.target.value)}
-                className="px-3 py-2 border rounded focus:outline-none focus:shadow-outline focus:border-blue-500"
+                className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
             </label>
             <button
