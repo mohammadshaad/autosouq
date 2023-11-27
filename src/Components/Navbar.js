@@ -129,27 +129,29 @@ export const Navbar = () => {
                 className="inline-flex items-center justify-center p-2 rounded-full text-white hover:text-gray-300 focus:outline-none "
                 onClick={toggleDropdown}
               >
-                {profileImageUrl ? ( // Display the user's profile image if available
+                {profileImageUrl ? (
                   <img
                     src={profileImageUrl}
                     alt="Profile"
                     className="h-12 w-12 rounded-full"
                   />
                 ) : (
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                    className="h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 15v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3M4 4h16a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2zm4 8h6m-3 3v3"
-                    />
-                  </svg>
+                  <div className=" shadow-lg border border-lightOrange text-gray-600 hover:bg-lightOrange hover:border-lightOrange hover:text-white transition-all duration-200 rounded-full p-2">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1}
+                      stroke="currentColor"
+                      className="w-6 h-6 md:w-8 md:h-8 "
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                      />
+                    </svg>
+                  </div>
                 )}
               </button>
 
@@ -165,14 +167,24 @@ export const Navbar = () => {
                     {/* Dropdown items */}
                     <a
                       href="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                      className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
                       role="menuitem"
                     >
                       Profile
                     </a>
+                    <Link
+                      to="/wishlist"
+                      className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                      role="menuitem"
+                    >
+                      Wishlist
+                      <span className="no-of-products relative bottom-2 left-1 px-2 py-1 !rounded-full">
+                        {totalQty}
+                      </span>
+                    </Link>
                     <a
                       href="#"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  hover:text-lightOrange"
+                      className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  hover:text-lightOrange"
                       role="menuitem"
                       onClick={handleLogout}
                     >

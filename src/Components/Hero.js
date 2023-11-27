@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLongRightIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
+import CarImage from "../images/about-us.png";
 
 export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
   const containerVariants = {
@@ -20,8 +21,8 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
       initial="hidden"
       animate="visible"
     >
-      <div className="landing__header__container pl-5 md:p-20">
-        <div className="landing__header">
+      <div className="landing__header__container pl-5 md:p-20 md:flex-row flex-col">
+        <div className="landing__header w-1/2">
           <h1 className="landing__header__main ">
             Find the best deals on used cars in UAE
           </h1>
@@ -31,14 +32,14 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
                 type="text"
                 placeholder="Search products"
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className=" md:pr-60 pl-4 text-xl placeholder:text-white placeholder:text-lg md:placeholder:text-xl py-2 md:py-4 border text-white border-gray-300 rounded-full w-full focus:outline-none focus:border-blue-500"
+                className=" md:pr-80 pl-4 text-xl placeholder:text-white placeholder:text-lg md:placeholder:text-xl py-4 lg:py-4 border text-white border-gray-300 rounded-full w-full focus:outline-none focus:border-lightOrange"
               />
             </div>
 
             <div className="flex items-center text-xs md:text-sm justify-start gap-4 flex-wrap">
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Make</option>
                 <option value="Toyota">Toyota</option>
@@ -58,7 +59,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Type</option>
                 <option value="SUV">SUV</option>
@@ -71,7 +72,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">City</option>
                 <option value="Abu Dhabi">Abu Dhabi</option>
@@ -102,6 +103,10 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
             major sites in the GCC, ensuring that your dream car is just a few
             clicks away.
           </div>
+        </div>
+
+        <div className="flex items-center justify-end w-full  ">
+          <img src={CarImage} alt="car" className="w-full" />
         </div>
       </div>
     </motion.div>

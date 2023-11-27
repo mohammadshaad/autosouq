@@ -13,7 +13,19 @@
   --marine: #053358;
   --white: #fff;
   --lighOrange: #fca311;
+  --toastify-color-progress-light: linear-gradient(
+    to right,
+    #4cd964,
+    #5ac8fa,
+    #007aff,
+    #34aadc,
+    #5856d6,
+    #ff2d55
+  );
+  --toastify-color-light: #fca311;
 }
+
+
 
 ::-webkit-scrollbar {
   display: none;
@@ -195,13 +207,10 @@ body {
 }
 
 .navbox .rightside .no-of-products {
-  background: var(--black);
+  background: var(--lighOrange);
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
-  width: 14px;
-  height: 14px;
-  border-radius: 3px;
   /* position: absolute;
   top: 28px;
   right: 140px;
@@ -266,14 +275,6 @@ body {
   font-size: 16px;
 }
 
-/* Style for the search input */
-.filters input[type="text"] {
-  /* padding: 8px; */
-  border: 1px solid #ccc;
-  border-radius: 100px;
-  font-size: 16px;
-  width: 100%;
-}
 
 /* Style for the "See More" button */
 .see-more-btn {
@@ -386,13 +387,12 @@ body {
 }
 
 .landing__header__container {
-  width: 80%;
+  width: 100%;
   min-height: 450px;
   min-width: 300px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
   z-index: 100;
 }
 

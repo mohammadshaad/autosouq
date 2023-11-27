@@ -18,7 +18,7 @@ export const CartReducer = (state, action) => {
 
             const check = shoppingCart.find(product => product.ProductID === action.id);
             if (check) {
-                toast.info('this product is already in your cart', {
+                toast.info('This car is already in your wishlist', {
                     position: "top-right",
                     autoClose: 2000,
                     hideProgressBar: false,
@@ -26,6 +26,7 @@ export const CartReducer = (state, action) => {
                     pauseOnHover: false,
                     draggable: false,
                     progress: undefined,
+                    theme: "colored",
                 });
                 return state;
             }

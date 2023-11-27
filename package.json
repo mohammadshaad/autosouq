@@ -19,7 +19,7 @@
     "react-dom": "^16.13.1",
     "react-icons-kit": "^1.3.1",
     "react-intersection-observer": "^9.5.2",
-    "react-router-dom": "^5.2.0",
+    "react-router-dom": "^5.3.4",
     "react-scripts": "^5.0.1",
     "react-toastify": "^6.1.0"
   },
@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "tailwindcss": "^3.3.2"
   },
   "description": "Welcome to the official GitHub repository of Enactus VIT Chennai! 🚀",

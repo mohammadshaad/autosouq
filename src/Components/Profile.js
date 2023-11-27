@@ -138,14 +138,25 @@ function Profile() {
                   className="rounded-full h-16 w-16 mr-4"
                 />
               ) : (
-                <img
-                  src={profileImageUrl}
-                  alt="Profile"
-                  className="rounded-full h-16 w-16 mr-4"
-                />
+                <div className="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-20 h-20"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                    />
+                  </svg>
+                </div>
               )}
               <div>
-                <label className="cursor-pointer text-blue-500">
+                <label className="cursor-pointer text-lightOrange">
                   Change Profile Image
                   <input
                     type="file"
@@ -202,13 +213,40 @@ function Profile() {
           // Display Mode
           <>
             <div className="flex items-center justify-center mb-10">
-              {profileImageUrl && (
+              {/* {profileImageUrl && (
                 <div className="border-4 border-lightOrange rounded-full">
                   <img
                     src={profileImageUrl}
                     alt="Profile"
                     className="rounded-full h-32 w-32  "
                   />
+                </div>
+              )} */}
+
+              {profileImageUrl ? (
+                <div className="border-4 border-lightOrange rounded-full">
+                  <img
+                    src={profileImageUrl}
+                    alt="Profile"
+                    className="rounded-full h-32 w-32  "
+                  />
+                </div>
+              ) : (
+                <div className="">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-20 h-20"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"
+                    />
+                  </svg>
                 </div>
               )}
             </div>
@@ -278,7 +316,9 @@ function Profile() {
                   {currentUserAddress ? (
                     currentUserAddress
                   ) : (
-                    <p className="text-gray-500 italic mt-3">Address not provided</p>
+                    <p className="text-gray-500 italic mt-3">
+                      Address not provided
+                    </p>
                   )}
                 </div>
               </p>

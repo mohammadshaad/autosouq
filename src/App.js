@@ -73,7 +73,7 @@ export class App extends Component {
               <Route path="/login" component={Login} />
               {/* cart products */}
               <Route
-                path="/cart"
+                path="/wishlist"
                 component={() => <Cart user={this.state.user} />}
               />
               {/* <Route
@@ -85,10 +85,10 @@ export class App extends Component {
               {/* add products */}
               {/* <Route path="/addproducts" component={AddProducts} /> */}
               {/* cashout */}
-              <Route
+              {/* <Route
                 path="/cashout"
                 component={() => <Cashout user={this.state.user} />}
-              />
+              /> */}
               <Route
                 path="/privacy-policy"
                 component={() => <PrivacyPolicy />}
@@ -115,10 +115,10 @@ export class App extends Component {
                 path="/success"
                 component={() => <Success />} 
               /> */}
-              <Route
+              {/* <Route
                 path="/admin/dashboard"
                 component={() => <AdminDashboard />}
-              />
+              /> */}
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

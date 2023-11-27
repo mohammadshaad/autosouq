@@ -34,7 +34,7 @@ export const Cart = ({ user }) => {
                   />
                 </div>
                 <h5>
-                  No items in your cart
+                  No items in your wishlist
                 </h5>
                 <div className="return-to-home">
                   <Link to="/" className="text-[#17191b]/50 hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3">
@@ -54,10 +54,10 @@ export const Cart = ({ user }) => {
                 <div className="cart-name">{cart.ProductName}</div>
 
                 <div className="cart-price-orignal">
-                  Rs {cart.ProductPrice}.00
+                  $ {cart.ProductPrice}.00
                 </div>
 
-                <div
+                {/* <div
                   className="inc"
                   onClick={() =>
                     dispatch({ type: "INC", id: cart.ProductID, cart })
@@ -77,7 +77,7 @@ export const Cart = ({ user }) => {
                   <Icon icon={ic_remove} size={24} />
                 </div>
 
-                <div className="cart-price">Rs {cart.TotalProductPrice}.00</div>
+                <div className="cart-price">Rs {cart.TotalProductPrice}.00</div> */}
 
                 <button
                   className="delete-btn"
@@ -89,7 +89,7 @@ export const Cart = ({ user }) => {
                 </button>
               </div>
             ))}
-          {shoppingCart.length > 0 && (
+          {/* {shoppingCart.length > 0 && (
             <div className="cart-summary w-full">
               <div className="cart-summary-heading">Cart-Summary</div>
               <div className="cart-summary-price">
@@ -101,11 +101,11 @@ export const Cart = ({ user }) => {
                 <span>{totalQty}</span>
               </div>
               <div className="flex w-full md:w-1/2 flex-col md:flex-row items-center justify-center gap-6 ">
-                {/* <Link to="cashout" className="cashout-link w-full">
+                <Link to="cashout" className="cashout-link w-full">
                   <button className="pay-btn w-full" style={{ marginTop: 5 + "px" }}>
                     Cash on Delivery
                   </button>
-                </Link> */}
+                </Link>
                 <Link to="payment" className="cashout-link">
                   <button className="pay-btn w-full py-8 " >
                     Pay Now
@@ -113,7 +113,7 @@ export const Cart = ({ user }) => {
                 </Link>
               </div>
             </div>
-          )}
+          )} */}
         </div>
       </>
     </>
