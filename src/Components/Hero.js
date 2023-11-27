@@ -97,7 +97,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
             </motion.button>
           </Link>
 
-          <div className="mt-4 font-light text-gray-400 text-xl max-w-xl">
+          <div className="mt-4 font-normal text-gray-300 text-2xl max-w-xl">
             Tired of endlessly scoring multiple sites for the perfect car? We've
             got you covered. AutoSouq seamlessly consolidates listings from
             major sites in the GCC, ensuring that your dream car is just a few
