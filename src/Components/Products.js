@@ -260,7 +260,7 @@ export const Products = () => {
                 </Transition.Root>
 
                 <main className="px-4">
-                  <div className="flex items-baseline justify-between  pb-6 pt-24">
+                  <div className="flex items-baseline justify-between  pb-6 pt-24 md:pt-0 md:pb-0">
                     {/* <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                       New Arrivals
                     </h1> */}
@@ -346,7 +346,7 @@ export const Products = () => {
                     <div className="grid grid-cols-1 md:grid-cols-2  ">
                       {/* Filters */}
                       <form className="hidden lg:block">
-                        <h3 className="sr-only">Categories</h3>
+                        {/* <h3 className="sr-only">Categories</h3>
                         <ul
                           role="list"
                           className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
@@ -356,7 +356,7 @@ export const Products = () => {
                               <a href={category.href}>{category.name}</a>
                             </li>
                           ))}
-                        </ul>
+                        </ul> */}
 
                         {filters.map((section) => (
                           <Disclosure
@@ -400,7 +400,7 @@ export const Products = () => {
                                             defaultValue={option.value}
                                             type="checkbox"
                                             defaultChecked={option.checked}
-                                            className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                            className="h-4 w-4 rounded border-gray-300 text-lightOrange focus:ring-lightOrange"
                                           />
                                           <label
                                             htmlFor={`filter-${section.id}-${optionIdx}`}
