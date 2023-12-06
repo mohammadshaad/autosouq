@@ -400,7 +400,7 @@ export const Products = () => {
                                             defaultValue={option.value}
                                             type="checkbox"
                                             defaultChecked={option.checked}
-                                            className="h-4 w-4 rounded border-gray-300 text-lightOrange focus:ring-lightOrange"
+                                            className="h-4 w-4 rounded focus:bg-transparent caret-lightOrange border-gray-300 text-lightOrange focus:ring-lightOrange"
                                           />
                                           <label
                                             htmlFor={`filter-${section.id}-${optionIdx}`}
