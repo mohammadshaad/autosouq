@@ -2,20 +2,30 @@ import React, { useContext, useEffect } from "react";
 import { CartContext } from "../Global/CartContext";
 import { Navbar } from "./Navbar";
 import { Icon } from "react-icons-kit";
-import { ic_add } from "react-icons-kit/md/ic_add";
-import { ic_remove } from "react-icons-kit/md/ic_remove";
 import { iosTrashOutline } from "react-icons-kit/ionicons/iosTrashOutline";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
-import { auth } from "../Config/Config";
 import NotFoundImg from "../images/pagenotfound.png";
 
 export const Cart = ({ user }) => {
   const { shoppingCart, dispatch, totalPrice, totalQty } =
     useContext(CartContext);
 
-  const history = useHistory();
+  useEffect(() => {
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      const cartData = JSON.parse(savedCart);
+      dispatch({ type: "SET_CART_FROM_LOCAL_STORAGE", cartData });
+    }
+  }, []);
 
+  const handleDeleteFromCart = (productId) => {
+    // Update local storage and dispatch action to update state
+    dispatch({ type: "DELETE", id: productId });
+    const updatedCart = shoppingCart.filter(
+      (item) => item.ProductID !== productId
+    );
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+  };
 
   return (
     <>
@@ -33,11 +43,12 @@ export const Cart = ({ user }) => {
                     className="w-96"
                   />
                 </div>
-                <h5>
-                  No items in your wishlist
-                </h5>
+                <h5>No items in your wishlist</h5>
                 <div className="return-to-home">
-                  <Link to="/" className="text-[#17191b]/50 hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3">
+                  <Link
+                    to="/"
+                    className="text-[#17191b]/50 hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+                  >
                     Return to Home page
                   </Link>
                 </div>
@@ -57,33 +68,9 @@ export const Cart = ({ user }) => {
                   $ {cart.ProductPrice}.00
                 </div>
 
-                {/* <div
-                  className="inc"
-                  onClick={() =>
-                    dispatch({ type: "INC", id: cart.ProductID, cart })
-                  }
-                >
-                  <Icon icon={ic_add} size={24} />
-                </div>
-
-                <div className="quantity">{cart.qty}</div>
-
-                <div
-                  className="dec"
-                  onClick={() =>
-                    dispatch({ type: "DEC", id: cart.ProductID, cart })
-                  }
-                >
-                  <Icon icon={ic_remove} size={24} />
-                </div>
-
-                <div className="cart-price">Rs {cart.TotalProductPrice}.00</div> */}
-
                 <button
                   className="delete-btn"
-                  onClick={() =>
-                    dispatch({ type: "DELETE", id: cart.ProductID, cart })
-                  }
+                  onClick={() => handleDeleteFromCart(cart.ProductID)}
                 >
                   <Icon icon={iosTrashOutline} size={24} />
                 </button>

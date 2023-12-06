@@ -56,7 +56,7 @@ export const Navbar = () => {
 
     // Clean up the observer when the component unmounts
     return () => unsubscribe();
-  }, []);
+  }, [totalQty]);
 
   // handle logout
   const handleLogout = () => {
@@ -178,9 +178,9 @@ export const Navbar = () => {
                       role="menuitem"
                     >
                       Wishlist
-                      <span className="no-of-products relative bottom-2 left-1 px-2 py-1 !rounded-full">
+                      {/* <span className="no-of-products relative bottom-2 left-1 px-2 py-1 !rounded-full">
                         {totalQty}
-                      </span>
+                      </span> */}
                     </Link>
                     <a
                       href="#"
