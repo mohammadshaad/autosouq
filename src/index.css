@@ -880,8 +880,9 @@ input:-webkit-autofill {
 
 .products-container {
   width: 100%;
+  height: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
 }
