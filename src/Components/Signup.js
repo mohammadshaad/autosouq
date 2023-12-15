@@ -125,7 +125,7 @@ export const Signup = (props) => {
   };
 
   return (
-    <div className="login-container">
+    <div className="signup-container">
       <div className="login-wrapper">
         <div className="login-fields">
           <div className="login-titles">
