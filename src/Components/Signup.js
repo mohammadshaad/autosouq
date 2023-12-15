@@ -72,7 +72,7 @@ export const Signup = (props) => {
               setMobile("");
               setAddress("");
               setError("");
-              props.history.push("/login");  
+              props.history.push("/login");
             })
             .catch((err) => setError(err.message));
         }
@@ -135,8 +135,9 @@ export const Signup = (props) => {
             </h5>
           </div>
           <form autoComplete="off" className="login-form" onSubmit={signup}>
-
-            <label htmlFor="profileImage" className="profileImage-label">Profile Image</label>
+            <label htmlFor="profileImage" className="profileImage-label">
+              Profile Image
+            </label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
 
             <input
@@ -187,6 +188,11 @@ export const Signup = (props) => {
             <button type="submit" className="login-btn">
               SUBMIT
             </button>
+            <div className="w-full flex items-center justify-center">
+              <Link to="/" className="login">
+                Go to Home
+              </Link>
+            </div>
           </form>
           <div className="flex md:flex-row flex-col gap-4 items-center justify-center w-full ">
             <button

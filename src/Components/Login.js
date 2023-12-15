@@ -41,7 +41,7 @@ export const Login = (props) => {
         props.history.push("/");
       })
       .catch((err) => setError(err.message));
-  }
+  };
 
   return (
     <div className="login-container">
@@ -73,6 +73,11 @@ export const Login = (props) => {
             <button type="submit" className="login-btn">
               LOGIN
             </button>
+            <div className="w-full flex items-center justify-center">
+              <Link to="/" className="login">
+                Go to Home
+              </Link>
+            </div>
           </form>
           <div className="flex md:flex-row flex-col gap-4 items-center justify-center w-full ">
             <button
