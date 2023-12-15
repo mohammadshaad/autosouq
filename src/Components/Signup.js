@@ -135,6 +135,8 @@ export const Signup = (props) => {
             </h5>
           </div>
           <form autoComplete="off" className="login-form" onSubmit={signup}>
+
+            <label htmlFor="profileImage" className="profileImage-label">Profile Image</label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
 
             <input
