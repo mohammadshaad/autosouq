@@ -123,9 +123,9 @@ export const Products = () => {
     <div className="products-main-container">
       <div className="products-wrapper">
         <h1>Products</h1>
-        <div className="flex md:flex-row flex-col items-center md:items-start justify-center md:justify-between w-full">
-          <div className="w-full md:w-1/2 ">
-            <div className="bg-white ">
+        <div className="flex md:flex-row flex-col gap-10 md:gap-0 items-center md:items-start justify-center md:justify-between w-full">
+          <div className=" md:w-1/3 ">
+            <div className="bg-white shadow-lg rounded-full md:rounded-3xl">
               <div className="">
                 {/* Mobile filter dialog */}
                 <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -175,7 +175,7 @@ export const Products = () => {
                           </div>
 
                           {/* Filters */}
-                          <form className="mt-4 border-t border-gray-200">
+                          <form className="mt-4 border-t  border-gray-200">
                             <h3 className="sr-only">Categories</h3>
                             <ul
                               role="list"
@@ -260,7 +260,7 @@ export const Products = () => {
                 </Transition.Root>
 
                 <main className="px-4">
-                  <div className="flex items-baseline justify-between  pb-6 pt-24 md:pt-0 md:pb-0">
+                  <div className="lg:hidden flex items-center justify-start px-6 py-3">
                     {/* <h1 className="text-4xl font-bold tracking-tight text-gray-900">
                       New Arrivals
                     </h1> */}
@@ -326,26 +326,22 @@ export const Products = () => {
                       </button> */}
                       <button
                         type="button"
-                        className="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden"
+                        className=" text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden flex items-center justify-center gap-4"
                         onClick={() => setMobileFiltersOpen(true)}
                       >
-                        <span className="sr-only">Filters</span>
                         <FunnelIcon className="h-5 w-5" aria-hidden="true" />
+                        <span className="text-gray-400">Filters</span>
                       </button>
                     </div>
                   </div>
 
                   <section
                     aria-labelledby="products-heading"
-                    className="pb-24 pt-6"
+                    className="py-10  hidden lg:block"
                   >
-                    <h2 id="products-heading" className="sr-only">
-                      Products
-                    </h2>
-
-                    <div className="grid grid-cols-1 md:grid-cols-2  ">
+                    <div className="">
                       {/* Filters */}
-                      <form className="hidden lg:block">
+                      <form className="">
                         {/* <h3 className="sr-only">Categories</h3>
                         <ul
                           role="list"
@@ -362,7 +358,7 @@ export const Products = () => {
                           <Disclosure
                             as="div"
                             key={section.id}
-                            className="border-b border-gray-200 py-6"
+                            className="border-b border-gray-200 py-6 "
                           >
                             {({ open }) => (
                               <>
