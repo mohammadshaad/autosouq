@@ -33,40 +33,104 @@ const subCategories = [
 ];
 const filters = [
   {
-    id: "color",
-    name: "Color",
+    id: "productCity",
+    name: "Product City",
     options: [
-      { value: "white", label: "White", checked: false },
-      { value: "beige", label: "Beige", checked: false },
-      { value: "blue", label: "Blue", checked: true },
-      { value: "brown", label: "Brown", checked: false },
-      { value: "green", label: "Green", checked: false },
-      { value: "purple", label: "Purple", checked: false },
+      { value: "Abu Dhabi", label: "Abu Dhabi", checked: false },
+      { value: "Sharjah", label: "Sharjah", checked: false },
+      { value: "Dubai", label: "Dubai", checked: false },
+      { value: "Ajman", label: "Ajman", checked: false },
+      { value: "Al Ain", label: "Al Ain", checked: false },
+      { value: "Riyadh", label: "Riyadh", checked: false },
+      { value: "Jeddah", label: "Jeddah", checked: false },
+      { value: "Doha", label: "Doha", checked: false },
     ],
   },
   {
-    id: "category",
-    name: "Category",
+    id: "productMake",
+    name: "Product Make",
     options: [
-      { value: "new-arrivals", label: "New Arrivals", checked: false },
-      { value: "sale", label: "Sale", checked: false },
-      { value: "travel", label: "Travel", checked: true },
-      { value: "organization", label: "Organization", checked: false },
-      { value: "accessories", label: "Accessories", checked: false },
+      { value: "Toyota", label: "Toyota", checked: false },
+      { value: "Mitsubishi", label: "Mitsubishi", checked: false },
+      { value: "Nissan", label: "Nissan", checked: false },
+      { value: "Hyundai", label: "Hyundai", checked: false },
+      { value: "Ford", label: "Ford", checked: false },
+      { value: "Honda", label: "Honda", checked: false },
+      { value: "Chevrolet", label: "Chevrolet", checked: false },
+      { value: "Volkswagen", label: "Volkswagen", checked: false },
+      { value: "Jeep", label: "Jeep", checked: false },
     ],
   },
   {
-    id: "size",
-    name: "Size",
+    id: "productType",
+    name: "Product Type",
     options: [
-      { value: "2l", label: "2L", checked: false },
-      { value: "6l", label: "6L", checked: false },
-      { value: "12l", label: "12L", checked: false },
-      { value: "18l", label: "18L", checked: false },
-      { value: "20l", label: "20L", checked: false },
-      { value: "40l", label: "40L", checked: true },
+      { value: "SUV", label: "SUV", checked: false },
+      { value: "Sedan", label: "Sedan", checked: false },
+      { value: "Hatchback", label: "Hatchback", checked: false },
+      { value: "Truck", label: "Truck", checked: false },
+      { value: "Coupe", label: "Coupe", checked: false },
+      { value: "Convertible", label: "Convertible", checked: false },
+      { value: "Luxury", label: "Luxury", checked: false },
     ],
   },
+  {
+    id: "productRating",
+    name: "Product Rating",
+    options: [
+      { value: "1", label: "1", checked: false },
+      { value: "2", label: "2", checked: false },
+      { value: "3", label: "3", checked: false },
+      { value: "4", label: "4", checked: false },
+      { value: "5", label: "5", checked: false },
+    ],
+  },
+  {
+    id: "productPrice",
+    name: "Product Price",
+    options: [
+      { value: "10000", label: "10000", checked: false },
+      { value: "20000", label: "20000", checked: false },
+      { value: "30000", label: "30000", checked: false },
+      { value: "40000", label: "40000", checked: false },
+      { value: "50000", label: "50000", checked: false },
+    ],
+  },
+  // {
+  //   id: "color",
+  //   name: "Color",
+  //   options: [
+  //     { value: "white", label: "White", checked: false },
+  //     { value: "beige", label: "Beige", checked: false },
+  //     { value: "blue", label: "Blue", checked: true },
+  //     { value: "brown", label: "Brown", checked: false },
+  //     { value: "green", label: "Green", checked: false },
+  //     { value: "purple", label: "Purple", checked: false },
+  //   ],
+  // },
+  // {
+  //   id: "category",
+  //   name: "Category",
+  //   options: [
+  //     { value: "new-arrivals", label: "New Arrivals", checked: false },
+  //     { value: "sale", label: "Sale", checked: false },
+  //     { value: "travel", label: "Travel", checked: true },
+  //     { value: "organization", label: "Organization", checked: false },
+  //     { value: "accessories", label: "Accessories", checked: false },
+  //   ],
+  // },
+  // {
+  //   id: "size",
+  //   name: "Size",
+  //   options: [
+  //     { value: "2l", label: "2L", checked: false },
+  //     { value: "6l", label: "6L", checked: false },
+  //     { value: "12l", label: "12L", checked: false },
+  //     { value: "18l", label: "18L", checked: false },
+  //     { value: "20l", label: "20L", checked: false },
+  //     { value: "40l", label: "40L", checked: true },
+  //   ],
+  // },
 ];
 
 function classNames(...classes) {
@@ -396,8 +460,9 @@ export const Products = () => {
                                             defaultValue={option.value}
                                             type="checkbox"
                                             defaultChecked={option.checked}
-                                            className="h-4 w-4 rounded focus:bg-transparent caret-lightOrange border-gray-300 text-lightOrange focus:ring-lightOrange"
+                                            className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-transparent !text-black !focus:ring-lightOrange"
                                           />
+
                                           <label
                                             htmlFor={`filter-${section.id}-${optionIdx}`}
                                             className="ml-3 text-sm text-gray-600"
