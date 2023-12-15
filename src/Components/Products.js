@@ -240,7 +240,7 @@ export const Products = () => {
 
                           {/* Filters */}
                           <form className="mt-4 border-t  border-gray-200">
-                            <h3 className="sr-only">Categories</h3>
+                            {/* <h3 className="sr-only">Categories</h3>
                             <ul
                               role="list"
                               className="px-2 py-3 font-medium text-gray-900"
@@ -255,7 +255,7 @@ export const Products = () => {
                                   </a>
                                 </li>
                               ))}
-                            </ul>
+                            </ul> */}
 
                             {filters.map((section) => (
                               <Disclosure
@@ -294,12 +294,12 @@ export const Products = () => {
                                               className="flex items-center"
                                             >
                                               <input
-                                                id={`filter-mobile-${section.id}-${optionIdx}`}
+                                                id={`filter-${section.id}-${optionIdx}`}
                                                 name={`${section.id}[]`}
                                                 defaultValue={option.value}
                                                 type="checkbox"
                                                 defaultChecked={option.checked}
-                                                className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-500"
+                                                className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-transparent !text-black !focus:ring-lightOrange"
                                               />
                                               <label
                                                 htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
