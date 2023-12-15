@@ -1,3 +1,4 @@
+
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { ProductsContext } from "../Global/ProductsContext";
@@ -139,28 +140,38 @@ function classNames(...classes) {
 
 export const Products = () => {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
-
   const { products } = useContext(ProductsContext);
   const { dispatch } = useContext(CartContext);
   const { currentUser, login } = useAuth();
-
   const history = useHistory();
-
-  const [selectedFilter, setSelectedFilter] = useState("");
+  const [selectedFilters, setSelectedFilters] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [displayedProductCount, setDisplayedProductCount] = useState(4);
-
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.2,
   });
 
+  const handleFilterChange = (filter, value) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      [filter]: value,
+    }));
+  };
+
+  const resetFilters = () => {
+    setSelectedFilters({});
+    setSearchTerm("");
+  };
+
   const filteredProducts = products.filter((product) => {
     const productNameLower = product.ProductName.toLowerCase();
-    return (
-      (selectedFilter === "" || product.ProductType === selectedFilter) &&
-      productNameLower.includes(searchTerm.toLowerCase())
-    );
+    const filterMatches =
+      Object.keys(selectedFilters).length === 0 ||
+      Object.entries(selectedFilters).every(([filter, value]) => {
+        return value.length === 0 || value.includes(product[filter]);
+      });
+    return filterMatches && productNameLower.includes(searchTerm.toLowerCase());
   });
 
   const loadMoreProducts = () => {
@@ -176,11 +187,6 @@ export const Products = () => {
       id: product.ProductID,
       product,
     });
-  };
-
-  const resetFilters = () => {
-    setSelectedFilter("");
-    setSearchTerm("");
   };
 
   return (
@@ -238,25 +244,7 @@ export const Products = () => {
                             </button>
                           </div>
 
-                          {/* Filters */}
                           <form className="mt-4 border-t  border-gray-200">
-                            {/* <h3 className="sr-only">Categories</h3>
-                            <ul
-                              role="list"
-                              className="px-2 py-3 font-medium text-gray-900"
-                            >
-                              {subCategories.map((category) => (
-                                <li key={category.name}>
-                                  <a
-                                    href={category.href}
-                                    className="block px-2 py-3"
-                                  >
-                                    {category.name}
-                                  </a>
-                                </li>
-                              ))}
-                            </ul> */}
-
                             {filters.map((section) => (
                               <Disclosure
                                 as="div"
@@ -298,7 +286,15 @@ export const Products = () => {
                                                 name={`${section.id}[]`}
                                                 defaultValue={option.value}
                                                 type="checkbox"
-                                                defaultChecked={option.checked}
+                                                checked={selectedFilters[
+                                                  section.id
+                                                ]?.includes(option.value)}
+                                                onChange={() =>
+                                                  handleFilterChange(
+                                                    section.id,
+                                                    option.value
+                                                  )
+                                                }
                                                 className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-transparent !text-black !focus:ring-lightOrange"
                                               />
                                               <label
@@ -325,69 +321,7 @@ export const Products = () => {
 
                 <main className="px-4">
                   <div className="lg:hidden flex items-center justify-start px-6 py-3">
-                    {/* <h1 className="text-4xl font-bold tracking-tight text-gray-900">
-                      New Arrivals
-                    </h1> */}
-
                     <div className="flex items-center">
-                      {/* <Menu
-                        as="div"
-                        className="relative inline-block text-left"
-                      >
-                        <div>
-                          <Menu.Button className="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900">
-                            Sort
-                            <ChevronDownIcon
-                              className="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                              aria-hidden="true"
-                            />
-                          </Menu.Button>
-                        </div>
-
-                        <Transition
-                          as={Fragment}
-                          enter="transition ease-out duration-100"
-                          enterFrom="transform opacity-0 scale-95"
-                          enterTo="transform opacity-100 scale-100"
-                          leave="transition ease-in duration-75"
-                          leaveFrom="transform opacity-100 scale-100"
-                          leaveTo="transform opacity-0 scale-95"
-                        >
-                          <Menu.Items className="absolute right-0 z-10 mt-2 w-40 origin-top-right rounded-md bg-white shadow-2xl ring-1 ring-black ring-opacity-5 focus:outline-none">
-                            <div className="py-1">
-                              {sortOptions.map((option) => (
-                                <Menu.Item key={option.name}>
-                                  {({ active }) => (
-                                    <a
-                                      href={option.href}
-                                      className={classNames(
-                                        option.current
-                                          ? "font-medium text-gray-900"
-                                          : "text-gray-500",
-                                        active ? "bg-gray-100" : "",
-                                        "block px-4 py-2 text-sm"
-                                      )}
-                                    >
-                                      {option.name}
-                                    </a>
-                                  )}
-                                </Menu.Item>
-                              ))}
-                            </div>
-                          </Menu.Items>
-                        </Transition>
-                      </Menu> */}
-
-                      {/* <button
-                        type="button"
-                        className="-m-2 ml-5 p-2 text-gray-400 hover:text-gray-500 sm:ml-7"
-                      >
-                        <span className="sr-only">View grid</span>
-                        <Squares2X2Icon
-                          className="h-5 w-5"
-                          aria-hidden="true"
-                        />
-                      </button> */}
                       <button
                         type="button"
                         className=" text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden flex items-center justify-center gap-4"
@@ -404,20 +338,7 @@ export const Products = () => {
                     className="py-10  hidden lg:block"
                   >
                     <div className="">
-                      {/* Filters */}
                       <form className="">
-                        {/* <h3 className="sr-only">Categories</h3>
-                        <ul
-                          role="list"
-                          className="space-y-4 border-b border-gray-200 pb-6 text-sm font-medium text-gray-900"
-                        >
-                          {subCategories.map((category) => (
-                            <li key={category.name}>
-                              <a href={category.href}>{category.name}</a>
-                            </li>
-                          ))}
-                        </ul> */}
-
                         {filters.map((section) => (
                           <Disclosure
                             as="div"
@@ -459,7 +380,15 @@ export const Products = () => {
                                             name={`${section.id}[]`}
                                             defaultValue={option.value}
                                             type="checkbox"
-                                            defaultChecked={option.checked}
+                                            checked={selectedFilters[
+                                              section.id
+                                            ]?.includes(option.value)}
+                                            onChange={() =>
+                                              handleFilterChange(
+                                                section.id,
+                                                option.value
+                                              )
+                                            }
                                             className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-transparent !text-black !focus:ring-lightOrange"
                                           />
 
@@ -485,92 +414,7 @@ export const Products = () => {
               </div>
             </div>
           </div>
-          {/* <div className="filters">
-            <input
-              type="text"
-              placeholder="Search products"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="search-box"
-            />
-            <select
-              value={selectedFilter}
-              onChange={(e) => setSelectedFilter(e.target.value)}
-            >
-              <option value="">All</option>
-              <option value="Inara">Inara</option>
-              <option value="Naari">Naari</option>
-              <option value="Malar">Malar</option>
-              <option value="Pooranya">Pooranya</option>
-            </select>
-          </div> */}
-          {/* <div className="flex flex-wrap w-full  items-start justify-center md:justify-start gap-4">
-            <div className="w-full">
-              <input
-                type="text"
-                placeholder="Search products"
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className=" md:pr-40 pl-4 text-black focus:text-black py-2 border  border-gray-300 rounded-full w-full focus:outline-none focus:border-blue-500"
-              />
-            </div>
 
-            <div className="flex flex-wrap items-center text-xs md:text-sm justify-start gap-4 ">
-              <select
-                onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
-              >
-                <option value="">Make</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Mitsubishi">Mitsubishi</option>
-                <option value="Nissan">Nissan</option>
-                <option value="Hyundai">Hyundai</option>
-                <option value="Ford">Ford</option>
-                <option value="Honda">Honda</option>
-                <option value="Chevrolet">Chevrolet</option>
-                <option value="Volkswagen">Volkswagen</option>
-                <option value="Jeep">Jeep</option>
-                <option value="Toyota">Toyota</option>
-                <option value="Land Rover">Land Rover</option>
-                <option value="Audi">Audi</option>
-                <option value="Ferrari">Ferrari</option>
-                <option value="Mercedes-Benz">Mercedes-Benz</option>
-              </select>
-              <select
-                onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
-              >
-                <option value="">Type</option>
-                <option value="SUV">SUV</option>
-                <option value="Sedan">Sedan</option>
-                <option value="Hatchback">Hatchback</option>
-                <option value="Truck">Truck</option>
-                <option value="Coupe">Coupe</option>
-                <option value="Convertible">Convertible</option>
-                <option value="Luxury">Luxury</option>
-              </select>
-              <select
-                onChange={(e) => setSelectedFilter(e.target.value)}
-                className="px-2 py-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
-              >
-                <option value="">City</option>
-                <option value="Abu Dhabi">Abu Dhabi</option>
-                <option value="Sharjah">Sharjah</option>
-                <option value="Dubai">Dubai</option>
-                <option value="Ajman">Ajman</option>
-                <option value="Al Ain">Al Ain</option>
-                <option value="Riyadh">Riyadh</option>
-                <option value="Jeddah">Jeddah</option>
-                <option value="Doha">Doha</option>
-                <option value="Muscat">Muscat</option>
-                <option value="Kuwait City">Kuwait City</option>
-                <option value="Manama">Manama</option>
-              </select>
-
-              <button className="px-2 py-2  login" onClick={resetFilters}>
-                Clear Filters
-              </button>
-            </div>
-          </div> */}
           <div className="products-container w-full">
             {filteredProducts.length === 0 ? (
               <div className="text-gray-400 font-light text-2xl flex-col flex items-center justify-center">
