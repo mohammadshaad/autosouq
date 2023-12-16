@@ -86,9 +86,7 @@ const filters = [
   {
     id: "accidentHistory",
     name: "Accident History",
-    options: [
-      { value: "No Accidents", label: "no accidents", checked: false },
-    ],
+    options: [{ value: "No Accidents", label: "no accidents", checked: false }],
   },
   {
     id: "serviceHistory",
@@ -364,8 +362,16 @@ export const Products = () => {
                                 className="w-full h-2 accent-lightOrange rounded-md"
                               />
                               <span className="ml-2 text-gray-400">
-                                ${selectedFilters.productPrice?.min || 0} - $
-                                {selectedFilters.productPrice?.max || 50000}
+                                {selectedFilters.productPrice &&
+                                  typeof selectedFilters.productPrice ===
+                                    "object" && (
+                                    <>
+                                      {selectedFilters.productPrice.min || 0} -
+                                      $
+                                      {selectedFilters.productPrice.max ||
+                                        50000}
+                                    </>
+                                  )}
                               </span>
                             </div>
 
@@ -388,8 +394,16 @@ export const Products = () => {
                                 className="w-full h-2 accent-lightOrange rounded-md"
                               />
                               <span className="ml-2 text-gray-400">
-                                {selectedFilters.productMillage?.min || 0} - $
-                                {selectedFilters.productMillage?.max || 50000}
+                                {selectedFilters.productMillage &&
+                                  typeof selectedFilters.productMillage ===
+                                    "object" && (
+                                    <>
+                                      {selectedFilters.productMillage.min || 0}{" "}
+                                      - {" "}
+                                      {selectedFilters.productMillage.max ||
+                                        300000}
+                                    </>
+                                  )}
                               </span>
                             </div>
                           </form>
@@ -540,8 +554,14 @@ export const Products = () => {
                             className="w-full h-2 accent-lightOrange rounded-md  "
                           />
                           <span className="ml-2 text-gray-400">
-                            ${selectedFilters.productPrice?.min || 0} - $
-                            {selectedFilters.productPrice?.max || 50000}
+                            {selectedFilters.productPrice &&
+                              typeof selectedFilters.productPrice ===
+                                "object" && (
+                                <>
+                                  {selectedFilters.productPrice.min || 0} - $
+                                  {selectedFilters.productPrice.max || 50000}
+                                </>
+                              )}
                           </span>
                         </div>
 
@@ -564,8 +584,14 @@ export const Products = () => {
                             className="w-full h-2 accent-lightOrange rounded-md"
                           />
                           <span className="ml-2 text-gray-400">
-                            {selectedFilters.productMillage?.min || 0} - {" "}
-                            {selectedFilters.productMillage?.max || 300000}
+                            {selectedFilters.productMillage &&
+                              typeof selectedFilters.productMillage ===
+                                "object" && (
+                                <>
+                                  {selectedFilters.productMillage.min || 0} -{" "}
+                                  {selectedFilters.productMillage.max || 300000}
+                                </>
+                              )}
                           </span>
                         </div>
                       </form>
