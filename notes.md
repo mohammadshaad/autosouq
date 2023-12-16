@@ -76,4 +76,4 @@
     - Find the best deals on used cars in UAE
 
 - About Section (below filters)
-    - Tired of endlessly scoring multiple sites for the perfect car? We've got you covered. AutoSouq seamlessly consolidates listings from major sites in the GCC, ensuring that your dream car is just a few clicks away.
+    - Tired of endlessly scouring multiple sites for the perfect car? We've got you covered. AutoSouq seamlessly consolidates listings from major sites in the GCC, ensuring that your dream car is just a few clicks away.

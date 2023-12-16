@@ -31,7 +31,7 @@ export const About = () => {
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
           >
-            Tired of endlessly scoring multiple sites for the perfect car? We've
+            Tired of endlessly scouring multiple sites for the perfect car? We've
             got you covered. AutoSouq seamlessly consolidates listings from
             major sites in the GCC, ensuring that your dream car is just a few
             clicks away.

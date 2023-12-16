@@ -80,24 +80,6 @@ function Footer() {
                     </li>
                     <li className="mb-4">
                       <a
-                        href="/shipping-policy"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
-                        target="__blank"
-                      >
-                        Shipping Policy
-                      </a>
-                    </li>
-                    <li className="mb-4">
-                      <a
-                        href="/refund-policy"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
-                        target="__blank"
-                      >
-                        Refund Policy
-                      </a>
-                    </li>
-                    <li className="mb-4">
-                      <a
                         href="/contact-us"
                         className="hover:underline text-gray-300 hover:text-lightOrange"
                         target="__blank"
