@@ -34,7 +34,7 @@ const subCategories = [
 const filters = [
   {
     id: "productCity",
-    name: "Product City",
+    name: "City",
     options: [
       { value: "Abu Dhabi", label: "Abu Dhabi", checked: false },
       { value: "Sharjah", label: "Sharjah", checked: false },
@@ -48,7 +48,7 @@ const filters = [
   },
   {
     id: "productMake",
-    name: "Product Make",
+    name: "Make",
     options: [
       { value: "Toyota", label: "Toyota", checked: false },
       { value: "Mitsubishi", label: "Mitsubishi", checked: false },
@@ -63,7 +63,7 @@ const filters = [
   },
   {
     id: "productType",
-    name: "Product Type",
+    name: "Type",
     options: [
       { value: "SUV", label: "SUV", checked: false },
       { value: "Sedan", label: "Sedan", checked: false },
@@ -76,7 +76,7 @@ const filters = [
   },
   {
     id: "productRating",
-    name: "Product Rating",
+    name: "Rating",
     options: [
       { value: "1", label: "1", checked: false },
       { value: "2", label: "2", checked: false },
@@ -164,6 +164,16 @@ export const Products = () => {
       productPrice: {
         min: minPrice,
         max: maxPrice,
+      },
+    }));
+  };
+
+  const handleMillageChange = (minMillage, maxMillage) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      productMillage: {
+        min: minMillage,
+        max: maxMillage,
       },
     }));
   };
@@ -383,6 +393,31 @@ export const Products = () => {
                                 {selectedFilters.productPrice?.max || 50000}
                               </span>
                             </div>
+
+                            <div className="flex mt-4 flex-col gap-4 items-start justify-center px-4 ">
+                              <label className="font-medium text-3xl text-gray-900">
+                                Millage Range
+                              </label>
+                              <input
+                                type="range"
+                                min="0"
+                                max="50000"
+                                step="1000"
+                                value={selectedFilters.productMillage?.min || 0}
+                                onChange={(e) =>
+                                  handleMillageChange(
+                                    parseInt(e.target.value),
+                                    selectedFilters.productMillage?.max || 50000
+                                  )
+                                }
+                                className="w-full h-2 accent-lightOrange rounded-md"
+                              />
+                              <span className="ml-2 text-gray-600">
+                                {selectedFilters.productMillage?.min || 0} - $
+                                {selectedFilters.productMillage?.max || 50000}
+                              </span>
+                            </div>
+                            
                           </form>
                         </Dialog.Panel>
                       </Transition.Child>
