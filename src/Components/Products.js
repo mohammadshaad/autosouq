@@ -87,8 +87,7 @@ const filters = [
     id: "accidentHistory",
     name: "Accident History",
     options: [
-      { value: "Yes", label: "Yes", checked: false },
-      { value: "No", label: "No", checked: false },
+      { value: "No Accidents", label: "no accidents", checked: false },
     ],
   },
   {
@@ -565,8 +564,8 @@ export const Products = () => {
                             className="w-full h-2 accent-lightOrange rounded-md"
                           />
                           <span className="ml-2 text-gray-400">
-                            {selectedFilters.productMillage?.min || 0} - $
-                            {selectedFilters.productMillage?.max || 50000}
+                            {selectedFilters.productMillage?.min || 0} - {" "}
+                            {selectedFilters.productMillage?.max || 300000}
                           </span>
                         </div>
                       </form>
