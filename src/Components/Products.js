@@ -85,6 +85,45 @@ const filters = [
       { value: "5", label: "5", checked: false },
     ],
   },
+  {
+    id: "regionalSpecs",
+    name: "Regional Specs",
+    options: [
+      { value: "GCC specs", label: "GCC specs", checked: false },
+      { value: "American specs", label: "American specs", checked: false },
+      { value: "Canadian specs", label: "Canadian specs", checked: false },
+      { value: "European specs", label: "European specs", checked: false },
+      { value: "Chinese specs", label: "Chinese specs", checked: false },
+      { value: "Japanese specs", label: "Japanese specs", checked: false },
+    ],
+  },
+  {
+    id: "seatingCapacity",
+    name: "Seating Capacity",
+    options: [
+      { value: "2", label: "2", checked: false },
+      { value: "4", label: "4", checked: false },
+      { value: "5", label: "5", checked: false },
+      { value: "6", label: "6", checked: false },
+      { value: "7", label: "7", checked: false },
+    ],
+  },
+  {
+    id: "accidentHistory",
+    name: "Accident History",
+    options: [
+      { value: "Yes", label: "Yes", checked: false },
+      { value: "No", label: "No", checked: false },
+    ],
+  },
+  {
+    id: "serviceHistory",
+    name: "Service History",
+    options: [
+      { value: "Yes", label: "Yes", checked: false },
+      { value: "No", label: "No", checked: false },
+    ],
+  },
   // {
   //   id: "productPrice",
   //   name: "Product Price",
@@ -216,9 +255,9 @@ export const Products = () => {
   return (
     <div className="products-main-container">
       <div className="products-wrapper py-20">
-        <div className="flex md:flex-row flex-col gap-10 md:gap-0 items-center md:items-start justify-center md:justify-between w-full">
-          <div className=" md:w-1/3 ">
-            <div className="bg-white shadow-lg rounded-full md:rounded-3xl">
+        <div className=" flex md:flex-row flex-col gap-10 md:gap-0 items-center md:items-start justify-center md:justify-between w-full">
+          <div className=" top-0 z-50 md:w-1/3 ">
+            <div className=" bg-white shadow-lg rounded-full md:rounded-3xl">
               <div className="">
                 {/* Mobile filter dialog */}
                 <Transition.Root show={mobileFiltersOpen} as={Fragment}>
