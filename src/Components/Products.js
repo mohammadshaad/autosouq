@@ -577,70 +577,117 @@ export const Products = () => {
             </div>
           </div>
 
-          <div className="applied-filters-container">
-            {Object.keys(selectedFilters).length > 0 && (
-              <div className="applied-filters">
-                <h2 className="text-lg font-medium text-gray-200 mb-2">
-                  Applied Filters:
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  {Object.entries(selectedFilters).map(([filter, value]) => (
-                    <div key={filter} className="flex items-center">
-                      <span className="bg-lightOrange text-black px-2 py-1 rounded-full">
-                        {filter}:{" "}
-                        {Array.isArray(value) ? value.join(", ") : value}
-                      </span>
-                      <button
-                        className="ml-2 text-gray-400 hover:text-gray-500 focus:outline-none"
-                        onClick={() => removeFilter(filter)}
-                      >
-                        <XMarkIcon className="h-4 w-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-                <button
-                  className="clear-filters-btn mt-2 text-gray-400 hover:text-gray-500 focus:outline-none"
-                  onClick={resetFilters}
-                >
-                  Clear All Filters
-                </button>
-              </div>
-            )}
-          </div>
-
-          <div className="products-container w-full">
-            {filteredProducts.length === 0 ? (
-              <div className="text-gray-400 font-light text-2xl flex-col flex items-center justify-center">
-                <img src={ProductNotFound} alt="" className="w-96 mx-auto" />
-                No cars to display.
-              </div>
-            ) : (
-              filteredProducts
-                .slice(0, displayedProductCount)
-                .map((product, index) => (
-                  <motion.div
-                    className="product-card"
-                    key={product.ProductID}
-                    ref={index === 0 ? ref : null}
-                    initial={{ opacity: 0 }}
-                    animate={inView ? { opacity: 1 } : { opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+          <div className="flex flex-col items-start justify-center gap-4 w-full">
+            <div className="applied-filters-container px-5 lg:px-10">
+              {Object.keys(selectedFilters).length > 0 && (
+                <div className="applied-filters">
+                  <div className="flex flex-wrap gap-2">
+                    {Object.entries(selectedFilters).map(([filter, value]) => (
+                      <div key={filter} className="flex items-center">
+                        <span className="bg-lightOrange text-black px-3 py-1 font-medium rounded-full">
+                          {Array.isArray(value) ? value.join(", ") : value}
+                        </span>
+                        <button
+                          className="ml-2 text-gray-400 hover:text-gray-500 focus:outline-none"
+                          onClick={() => removeFilter(filter)}
+                        >
+                          <XMarkIcon className="h-4 w-4" />
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                  <button
+                    className="clear-filters-btn text-sm mt-4 text-gray-400 hover:text-gray-500 focus:outline-none flex items-center justify-center gap-1"
+                    onClick={resetFilters}
                   >
-                    <div className="product-img">
-                      <img src={product.ProductImg} alt="not found" />
-                    </div>
-                    <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
-                      <div className="flex flex-col items-start justify-center ">
-                        <div className="product-name flex items-center justify-start w-full text-3xl font-bold">
-                          {product.ProductName}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-4 h-4"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0"
+                      />
+                    </svg>
+                    Clear All Filters
+                  </button>
+                </div>
+              )}
+            </div>
+
+            <div className="products-container w-full">
+              {filteredProducts.length === 0 ? (
+                <div className="text-gray-400 font-light text-2xl flex-col flex items-center justify-center">
+                  <img src={ProductNotFound} alt="" className="w-96 mx-auto" />
+                  No cars to display.
+                </div>
+              ) : (
+                filteredProducts
+                  .slice(0, displayedProductCount)
+                  .map((product, index) => (
+                    <motion.div
+                      className="product-card"
+                      key={product.ProductID}
+                      ref={index === 0 ? ref : null}
+                      initial={{ opacity: 0 }}
+                      animate={inView ? { opacity: 1 } : { opacity: 0 }}
+                      transition={{ duration: 0.5 }}
+                    >
+                      <div className="product-img">
+                        <img src={product.ProductImg} alt="not found" />
+                      </div>
+                      <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
+                        <div className="flex flex-col items-start justify-center ">
+                          <div className="product-name flex items-center justify-start w-full text-3xl font-bold">
+                            {product.ProductName}
+                          </div>
+                          <div className="font-medium text-lg text-gray-500">
+                            {product.ProductType}
+                          </div>
                         </div>
-                        <div className="font-medium text-lg text-gray-500">
-                          {product.ProductType}
+                        <div className="flex items-center justify-between w-full">
+                          <div className="flex items-center justify-center">
+                            <div>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="w-4 text-black"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
+                                />
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                />
+                              </svg>
+                            </div>
+                            <div className="font-medium">
+                              {product.ProductCity}
+                            </div>
+                          </div>
                         </div>
                       </div>
-                      <div className="flex items-center justify-between w-full">
-                        <div className="flex items-center justify-center">
+
+                      <div className="flex items-center justify-center w-full md:flex-row flex-col">
+                        <div className="w-full text-lg">
+                          $ {product.ProductPrice}.00
+                        </div>
+                        <button
+                          className="login-btn !p-3 !font-light !text-sm flex items-center justify-center gap-2"
+                          onClick={() => addToCart(product)}
+                        >
                           <div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -648,80 +695,45 @@ export const Products = () => {
                               viewBox="0 0 24 24"
                               strokeWidth={1.5}
                               stroke="currentColor"
-                              className="w-4 text-black"
+                              className="w-4 h-4"
                             >
                               <path
                                 strokeLinecap="round"
                                 strokeLinejoin="round"
-                                d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z"
-                              />
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z"
+                                d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
                               />
                             </svg>
                           </div>
-                          <div className="font-medium">
-                            {product.ProductCity}
-                          </div>
-                        </div>
+                          <div>Add to wishlist</div>
+                        </button>
                       </div>
-                    </div>
-
-                    <div className="flex items-center justify-center w-full md:flex-row flex-col">
-                      <div className="w-full text-lg">
-                        $ {product.ProductPrice}.00
-                      </div>
-                      <button
-                        className="login-btn !p-3 !font-light !text-sm flex items-center justify-center gap-2"
-                        onClick={() => addToCart(product)}
-                      >
-                        <div>
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            strokeWidth={1.5}
-                            stroke="currentColor"
-                            className="w-4 h-4"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                            />
-                          </svg>
-                        </div>
-                        <div>Add to wishlist</div>
-                      </button>
-                    </div>
-                  </motion.div>
-                ))
+                    </motion.div>
+                  ))
+              )}
+            </div>
+            {displayedProductCount < filteredProducts.length && (
+              <button
+                className="see-more-btn flex items-center justify-center gap-4"
+                onClick={loadMoreProducts}
+              >
+                See More
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                  />
+                </svg>
+              </button>
             )}
           </div>
-          {displayedProductCount < filteredProducts.length && (
-            <button
-              className="see-more-btn flex items-center justify-center gap-4"
-              onClick={loadMoreProducts}
-            >
-              See More
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="1.5"
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                />
-              </svg>
-            </button>
-          )}
         </div>
       </div>
     </div>
