@@ -39,7 +39,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
             <div className="flex items-center text-sm md:text-lg justify-start gap-4 flex-wrap">
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="sm:!px-2 sm:!py-2 lg:!py-2 lg:!px-4 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Make</option>
                 <option value="Toyota">Toyota</option>
@@ -59,7 +59,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="sm:!px-2 sm:!py-2 lg:!py-2 lg:!px-4 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Type</option>
                 <option value="SUV">SUV</option>
@@ -72,7 +72,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="sm:!px-2 sm:!py-2 lg:!py-2 lg:!px-4 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">City</option>
                 <option value="Abu Dhabi">Abu Dhabi</option>
