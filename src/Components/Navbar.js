@@ -130,11 +130,31 @@ export const Navbar = () => {
                 onClick={toggleDropdown}
               >
                 {profileImageUrl ? (
-                  <img
-                    src={profileImageUrl}
-                    alt="Profile"
-                    className="h-12 w-12 rounded-full"
-                  />
+                  <div className="p-2 rounded-3xl border border-gray-400 flex items-center justify-center gap-1">
+                    <img
+                      src={profileImageUrl}
+                      alt="Profile"
+                      className="h-12 w-12 rounded-full"
+                    />
+                    <div>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={2}
+                        stroke="currentColor"
+                        className={`${
+                          isDropdownOpen ? "-rotate-180" : "rotate-0"
+                        } duration-200 transition-all w-4 h-4 text-gray-500`}
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                        />
+                      </svg>
+                    </div>
+                  </div>
                 ) : (
                   <div className=" shadow-lg border border-lightOrange text-gray-600 hover:bg-lightOrange hover:border-lightOrange hover:text-white transition-all duration-200 rounded-full p-2">
                     <svg
