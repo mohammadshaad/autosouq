@@ -32,14 +32,14 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
                 type="text"
                 placeholder="Search products"
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className=" md:pr-80 pl-4 text-xl placeholder:text-white placeholder:text-lg md:placeholder:text-xl py-4 lg:py-4 border text-white border-gray-300 rounded-full w-full focus:outline-none focus:border-lightOrange"
+                className=" md:pr-80 pl-4 sm:!py-2 lg:!py-4 text-xl  placeholder:text-white placeholder:text-lg md:placeholder:text-xl border text-white border-gray-300 rounded-full w-full focus:outline-none focus:border-lightOrange"
               />
             </div>
 
-            <div className="flex items-center text-xs md:text-sm justify-start gap-4 flex-wrap">
+            <div className="flex items-center text-sm md:text-lg justify-start gap-4 flex-wrap">
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Make</option>
                 <option value="Toyota">Toyota</option>
@@ -59,7 +59,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">Type</option>
                 <option value="SUV">SUV</option>
@@ -72,7 +72,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
               </select>
               <select
                 onChange={(e) => setSelectedFilter(e.target.value)}
-                className="p-3 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
+                className="p-2 border border-gray-300 rounded-full focus:outline-none focus:border-lightOrange bg-transparent"
               >
                 <option value="">City</option>
                 <option value="Abu Dhabi">Abu Dhabi</option>
@@ -97,7 +97,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
             </motion.button>
           </Link>
 
-          <div className="mt-4 font-normal text-gray-300 text-2xl max-w-xl">
+          <div className="mt-4 font-normal text-gray-300 text-lg md:text-2xl max-w-lg px-4">
             Tired of endlessly scouring multiple sites for the perfect car? We've
             got you covered. AutoSouq seamlessly consolidates listings from
             major sites in the GCC, ensuring that your dream car is just a few
