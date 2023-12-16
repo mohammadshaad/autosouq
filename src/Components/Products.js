@@ -192,7 +192,6 @@ export const Products = () => {
   return (
     <div className="products-main-container">
       <div className="products-wrapper">
-        <h1>Products</h1>
         <div className="flex md:flex-row flex-col gap-10 md:gap-0 items-center md:items-start justify-center md:justify-between w-full">
           <div className=" md:w-1/3 ">
             <div className="bg-white shadow-lg rounded-full md:rounded-3xl">
