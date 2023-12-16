@@ -24,16 +24,9 @@ const sortOptions = [
   { name: "Price: Low to High", href: "#", current: false },
   { name: "Price: High to Low", href: "#", current: false },
 ];
-const subCategories = [
-  { name: "Totes", href: "#" },
-  { name: "Backpacks", href: "#" },
-  { name: "Travel Bags", href: "#" },
-  { name: "Hip Bags", href: "#" },
-  { name: "Laptop Sleeves", href: "#" },
-];
 const filters = [
   {
-    id: "productCity",
+    id: "ProductCity",
     name: "City",
     options: [
       { value: "Abu Dhabi", label: "Abu Dhabi", checked: false },
@@ -47,7 +40,7 @@ const filters = [
     ],
   },
   {
-    id: "productMake",
+    id: "ProductMake",
     name: "Make",
     options: [
       { value: "Toyota", label: "Toyota", checked: false },
@@ -62,7 +55,7 @@ const filters = [
     ],
   },
   {
-    id: "productType",
+    id: "ProductType",
     name: "Type",
     options: [
       { value: "SUV", label: "SUV", checked: false },
@@ -75,7 +68,7 @@ const filters = [
     ],
   },
   {
-    id: "productRating",
+    id: "ProductRating",
     name: "Rating",
     options: [
       { value: "1", label: "1", checked: false },
@@ -698,7 +691,7 @@ export const Products = () => {
                           </div>
                         </div>
 
-                        <div className="flex items-center justify-center gap-1">
+                        {/* <div className="flex items-center justify-center gap-1">
                           <div>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
@@ -731,7 +724,7 @@ export const Products = () => {
                               </div>
                             )}
                           </div>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
 
