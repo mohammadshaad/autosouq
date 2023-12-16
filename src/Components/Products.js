@@ -255,9 +255,9 @@ export const Products = () => {
   return (
     <div className="products-main-container">
       <div className="products-wrapper py-20">
-        <div className=" flex md:flex-row flex-col gap-10 md:gap-0 items-center md:items-start justify-center md:justify-between w-full">
-          <div className=" top-0 z-50 md:w-1/3 ">
-            <div className=" bg-white shadow-lg rounded-full md:rounded-3xl">
+        <div className=" flex md:flex-row flex-col gap-10 md:gap-0 items-start md:items-start justify-center md:justify-between w-full">
+          <div className=" w-full px-14 lg:px-0 md:w-1/3 ">
+            <div className=" bg-gray-900   shadow-lg rounded-full md:rounded-3xl">
               <div className="">
                 {/* Mobile filter dialog */}
                 <Transition.Root show={mobileFiltersOpen} as={Fragment}>
@@ -288,14 +288,14 @@ export const Products = () => {
                         leaveFrom="translate-x-0"
                         leaveTo="translate-x-full"
                       >
-                        <Dialog.Panel className="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white py-4 pb-12 shadow-xl">
+                        <Dialog.Panel className="z-50 relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-gray-900 py-4 pb-12 shadow-xl">
                           <div className="flex items-center justify-between px-4">
-                            <h2 className="text-lg font-medium text-gray-900">
+                            <h2 className="text-lg font-medium text-gray-200">
                               Filters
                             </h2>
                             <button
                               type="button"
-                              className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-white p-2 text-gray-400"
+                              className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400"
                               onClick={() => setMobileFiltersOpen(false)}
                             >
                               <span className="sr-only">Close menu</span>
@@ -345,13 +345,13 @@ export const Products = () => {
                               <Disclosure
                                 as="div"
                                 key={section.id}
-                                className="border-y border-gray-200 px-4 py-6"
+                                className="border-y-[0.1px] border-gray-200 px-4 py-6"
                               >
                                 {({ open }) => (
                                   <>
                                     <h3 className="-mx-2 -my-3 flow-root">
-                                      <Disclosure.Button className="flex w-full items-center justify-between bg-white px-2 py-3 text-gray-400 hover:text-gray-500">
-                                        <span className="font-medium text-gray-900">
+                                      <Disclosure.Button className="flex w-full items-center justify-between bg-gray-900 px-2 py-3 text-gray-400 hover:text-gray-500">
+                                        <span className="font-medium text-gray-200">
                                           {section.name}
                                         </span>
                                         <span className="ml-6 flex items-center">
@@ -391,7 +391,7 @@ export const Products = () => {
                                                     option.value
                                                   )
                                                 }
-                                                className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-transparent !text-black !focus:ring-lightOrange"
+                                                className="h-4 w-4 rounded checked:!bg-lightOrange checked:!text-white  border-gray-300 ring-gray-300  focus:ring-0 focus:border-0 focus:outline-none !bg-gray-900 !text-black !focus:ring-lightOrange"
                                               />
                                               <label
                                                 htmlFor={`filter-mobile-${section.id}-${optionIdx}`}
@@ -410,7 +410,7 @@ export const Products = () => {
                             ))}
 
                             <div className="flex mt-4 flex-col gap-4 items-start justify-center px-4 ">
-                              <label className="font-medium text-3xl text-gray-900">
+                              <label className="font-medium text-3xl text-gray-200">
                                 Price Range
                               </label>
                               <input
@@ -427,14 +427,14 @@ export const Products = () => {
                                 }
                                 className="w-full h-2 accent-lightOrange rounded-md"
                               />
-                              <span className="ml-2 text-gray-600">
+                              <span className="ml-2 text-gray-400">
                                 ${selectedFilters.productPrice?.min || 0} - $
                                 {selectedFilters.productPrice?.max || 50000}
                               </span>
                             </div>
 
                             <div className="flex mt-4 flex-col gap-4 items-start justify-center px-4 ">
-                              <label className="font-medium text-3xl text-gray-900">
+                              <label className="font-medium text-3xl text-gray-200">
                                 Millage Range
                               </label>
                               <input
@@ -451,7 +451,7 @@ export const Products = () => {
                                 }
                                 className="w-full h-2 accent-lightOrange rounded-md"
                               />
-                              <span className="ml-2 text-gray-600">
+                              <span className="ml-2 text-gray-400">
                                 {selectedFilters.productMillage?.min || 0} - $
                                 {selectedFilters.productMillage?.max || 50000}
                               </span>
@@ -463,8 +463,8 @@ export const Products = () => {
                   </Dialog>
                 </Transition.Root>
 
-                <main className="px-4">
-                  <div className="lg:hidden flex items-center justify-start px-6 py-3">
+                <main className="px-4 w-full">
+                  <div className="lg:hidden flex items-center justify-start w-full px-6 py-3">
                     <div className="flex items-center">
                       <button
                         type="button"
@@ -508,7 +508,7 @@ export const Products = () => {
                               type="search"
                               name="search"
                               id="search"
-                              className="focus:ring-lightOrange focus:text-gray-600 focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
+                              className="focus:ring-lightOrange focus:text-gray-400 focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
                               placeholder="Search"
                               value={searchTerm}
                               onChange={(e) => setSearchTerm(e.target.value)}
@@ -520,13 +520,13 @@ export const Products = () => {
                           <Disclosure
                             as="div"
                             key={section.id}
-                            className="border-b border-gray-200 py-6 "
+                            className="border-b-[0.2px] border-gray-200 py-6 "
                           >
                             {({ open }) => (
                               <>
                                 <h3 className="-my-3 flow-root">
-                                  <Disclosure.Button className="flex w-full items-center justify-between bg-white py-3 text-sm text-gray-400 hover:text-gray-500">
-                                    <span className="font-medium text-gray-900">
+                                  <Disclosure.Button className="flex w-full items-center justify-between bg-transparent py-3 text-sm text-gray-400 hover:text-gray-500">
+                                    <span className="font-medium text-gray-200">
                                       {section.name}
                                     </span>
                                     <span className="ml-6 flex items-center">
@@ -571,7 +571,7 @@ export const Products = () => {
 
                                           <label
                                             htmlFor={`filter-${section.id}-${optionIdx}`}
-                                            className="ml-3 text-sm text-gray-600"
+                                            className="ml-3 text-sm text-gray-400"
                                           >
                                             {option.label}
                                           </label>
@@ -586,7 +586,7 @@ export const Products = () => {
                         ))}
 
                         <div className="flex mt-4 flex-col gap-4 items-start justify-center">
-                          <label className="font-medium text-sm text-gray-900">
+                          <label className="font-medium text-sm text-gray-200">
                             Price Range
                           </label>
                           <input
@@ -603,14 +603,14 @@ export const Products = () => {
                             }
                             className="w-full h-2 accent-lightOrange rounded-md  "
                           />
-                          <span className="ml-2 text-gray-600">
+                          <span className="ml-2 text-gray-400">
                             ${selectedFilters.productPrice?.min || 0} - $
                             {selectedFilters.productPrice?.max || 50000}
                           </span>
                         </div>
 
                         <div className="flex mt-4 flex-col gap-4 items-start justify-center">
-                          <label className="font-medium text-sm text-gray-900">
+                          <label className="font-medium text-sm text-gray-200">
                             Millage Range
                           </label>
                           <input
@@ -627,7 +627,7 @@ export const Products = () => {
                             }
                             className="w-full h-2 accent-lightOrange rounded-md"
                           />
-                          <span className="ml-2 text-gray-600">
+                          <span className="ml-2 text-gray-400">
                             {selectedFilters.productMillage?.min || 0} - $
                             {selectedFilters.productMillage?.max || 50000}
                           </span>
