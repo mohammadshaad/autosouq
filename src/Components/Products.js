@@ -350,7 +350,7 @@ export const Products = () => {
                                 {({ open }) => (
                                   <>
                                     <h3 className="-mx-2 -my-3 flow-root">
-                                      <Disclosure.Button className="flex w-full items-center justify-between bg-gray-900 px-2 py-3 text-gray-400 hover:text-gray-500">
+                                      <Disclosure.Button className="flex w-full items-center justify-between bg-gray-900 px-2 py-3 text-gray-400 hover:text-gray-500 focus:ring-0 focus:outline-none outline-none ring-0">
                                         <span className="font-medium text-gray-200">
                                           {section.name}
                                         </span>
@@ -520,12 +520,12 @@ export const Products = () => {
                           <Disclosure
                             as="div"
                             key={section.id}
-                            className="border-b-[0.2px] border-gray-200 py-6 "
+                            className="border-b-[0.2px] focus:ring-0 focus:outline-none outline-none ring-0 border-gray-200 py-6 "
                           >
                             {({ open }) => (
                               <>
                                 <h3 className="-my-3 flow-root">
-                                  <Disclosure.Button className="flex w-full items-center justify-between bg-transparent py-3 text-sm text-gray-400 hover:text-gray-500">
+                                  <Disclosure.Button className="flex w-full items-center justify-between bg-transparent py-3 text-sm text-gray-400 hover:text-gray-500 focus:ring-0 focus:outline-none outline-none ring-0">
                                     <span className="font-medium text-gray-200">
                                       {section.name}
                                     </span>
