@@ -262,7 +262,7 @@ export const Products = () => {
                               <label htmlFor="search" className="sr-only">
                                 Search
                               </label>
-                              <div className="relative rounded-md shadow-sm">
+                              <div className="relative rounded-full shadow-sm">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -283,7 +283,7 @@ export const Products = () => {
                                   type="search"
                                   name="search"
                                   id="search"
-                                  className="focus:ring-lightOrange focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                                  className="focus:ring-lightOrange focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
                                   placeholder="Search"
                                   value={searchTerm}
                                   onChange={(e) =>
@@ -414,7 +414,7 @@ export const Products = () => {
                           <label htmlFor="search" className="sr-only">
                             Search
                           </label>
-                          <div className="relative rounded-md shadow-sm">
+                          <div className="relative rounded-full shadow-sm">
                             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                               <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -435,7 +435,7 @@ export const Products = () => {
                               type="search"
                               name="search"
                               id="search"
-                              className="focus:ring-lightOrange focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
+                              className="focus:ring-lightOrange focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
                               placeholder="Search"
                               value={searchTerm}
                               onChange={(e) => setSearchTerm(e.target.value)}
