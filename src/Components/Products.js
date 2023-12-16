@@ -342,7 +342,7 @@ export const Products = () => {
                                     selectedFilters.productPrice?.max || 50000
                                   )
                                 }
-                                className="w-full "
+                                className="w-full h-2 accent-lightOrange rounded-md"
                               />
                               <span className="ml-2 text-gray-600">
                                 ${selectedFilters.productPrice?.min || 0} - $
@@ -461,7 +461,7 @@ export const Products = () => {
                                 selectedFilters.productPrice?.max || 50000
                               )
                             }
-                            className="w-full "
+                            className="w-full h-2 accent-lightOrange rounded-md  "
                           />
                           <span className="ml-2 text-gray-600">
                             ${selectedFilters.productPrice?.min || 0} - $
