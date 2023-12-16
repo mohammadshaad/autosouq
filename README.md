@@ -13,7 +13,7 @@ AutoSouq is a project that aims to create an online marketplace for buying and s
 
 ## Installation
 
-1. Clone the repository: `git clone https://github.com/mohammadshaad/AutoSouq.git`
+1. Clone the repository: `git clone https://github.com/mohammadshaad/autosouq.git`
 2. Install the required dependencies: `npm install`
 3. Set up the database and configure the connection in the `.env` file.
 4. Start the application: `npm start`
