@@ -295,7 +295,7 @@ export const Products = () => {
                             </h2>
                             <button
                               type="button"
-                              className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400"
+                              className="-mr-2 flex h-10 w-10 items-center justify-center rounded-md bg-gray-900 p-2 text-gray-400 focus:ring-0 focus:outline-none outline-none ring-0"
                               onClick={() => setMobileFiltersOpen(false)}
                             >
                               <span className="sr-only">Close menu</span>
@@ -465,10 +465,10 @@ export const Products = () => {
 
                 <main className="px-4 w-full">
                   <div className="lg:hidden flex items-center justify-start w-full px-6 py-3">
-                    <div className="flex items-center">
+                    <div className="flex items-center ">
                       <button
                         type="button"
-                        className=" text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden flex items-center justify-center gap-4"
+                        className=" text-gray-400 hover:text-gray-500 sm:ml-6 lg:hidden flex items-center justify-center gap-4 focus:ring-0 focus:outline-none outline-none ring-0"
                         onClick={() => setMobileFiltersOpen(true)}
                       >
                         <FunnelIcon className="h-5 w-5" aria-hidden="true" />
