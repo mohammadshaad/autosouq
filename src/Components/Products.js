@@ -1,4 +1,3 @@
-
 import React, { Fragment, useState, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { ProductsContext } from "../Global/ProductsContext";
@@ -86,17 +85,17 @@ const filters = [
       { value: "5", label: "5", checked: false },
     ],
   },
-  {
-    id: "productPrice",
-    name: "Product Price",
-    options: [
-      { value: "10000", label: "10000", checked: false },
-      { value: "20000", label: "20000", checked: false },
-      { value: "30000", label: "30000", checked: false },
-      { value: "40000", label: "40000", checked: false },
-      { value: "50000", label: "50000", checked: false },
-    ],
-  },
+  // {
+  //   id: "productPrice",
+  //   name: "Product Price",
+  //   options: [
+  //     { value: "10000", label: "10000", checked: false },
+  //     { value: "20000", label: "20000", checked: false },
+  //     { value: "30000", label: "30000", checked: false },
+  //     { value: "40000", label: "40000", checked: false },
+  //     { value: "50000", label: "50000", checked: false },
+  //   ],
+  // },
   // {
   //   id: "color",
   //   name: "Color",
@@ -159,6 +158,16 @@ export const Products = () => {
     }));
   };
 
+  const handlePriceChange = (minPrice, maxPrice) => {
+    setSelectedFilters((prevFilters) => ({
+      ...prevFilters,
+      productPrice: {
+        min: minPrice,
+        max: maxPrice,
+      },
+    }));
+  };
+
   const resetFilters = () => {
     setSelectedFilters({});
     setSearchTerm("");
@@ -169,8 +178,13 @@ export const Products = () => {
     const filterMatches =
       Object.keys(selectedFilters).length === 0 ||
       Object.entries(selectedFilters).every(([filter, value]) => {
-        return value.length === 0 || value.includes(product[filter]);
+        if (Array.isArray(value)) {
+          return value.length === 0 || value.includes(product[filter]);
+        } else {
+          return product[filter] === value;
+        }
       });
+
     return filterMatches && productNameLower.includes(searchTerm.toLowerCase());
   });
 
@@ -248,7 +262,7 @@ export const Products = () => {
                               <Disclosure
                                 as="div"
                                 key={section.id}
-                                className="border-t border-gray-200 px-4 py-6"
+                                className="border-y border-gray-200 px-4 py-6"
                               >
                                 {({ open }) => (
                                   <>
@@ -311,6 +325,30 @@ export const Products = () => {
                                 )}
                               </Disclosure>
                             ))}
+
+                            <div className="flex mt-4 flex-col gap-4 items-start justify-center px-4 ">
+                              <label className="font-medium text-3xl text-gray-900">
+                                Price Range
+                              </label>
+                              <input
+                                type="range"
+                                min="0"
+                                max="50000"
+                                step="1000"
+                                value={selectedFilters.productPrice?.min || 0}
+                                onChange={(e) =>
+                                  handlePriceChange(
+                                    parseInt(e.target.value),
+                                    selectedFilters.productPrice?.max || 50000
+                                  )
+                                }
+                                className="w-full "
+                              />
+                              <span className="ml-2 text-gray-600">
+                                ${selectedFilters.productPrice?.min || 0} - $
+                                {selectedFilters.productPrice?.max || 50000}
+                              </span>
+                            </div>
                           </form>
                         </Dialog.Panel>
                       </Transition.Child>
@@ -406,6 +444,30 @@ export const Products = () => {
                             )}
                           </Disclosure>
                         ))}
+
+                        <div className="flex mt-4 flex-col gap-4 items-start justify-center">
+                          <label className="font-medium text-sm text-gray-900">
+                            Price Range
+                          </label>
+                          <input
+                            type="range"
+                            min="0"
+                            max="50000"
+                            step="1000"
+                            value={selectedFilters.productPrice?.min || 0}
+                            onChange={(e) =>
+                              handlePriceChange(
+                                parseInt(e.target.value),
+                                selectedFilters.productPrice?.max || 50000
+                              )
+                            }
+                            className="w-full "
+                          />
+                          <span className="ml-2 text-gray-600">
+                            ${selectedFilters.productPrice?.min || 0} - $
+                            {selectedFilters.productPrice?.max || 50000}
+                          </span>
+                        </div>
                       </form>
                     </div>
                   </section>
