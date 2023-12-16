@@ -146,6 +146,14 @@ export const Products = () => {
     }));
   };
 
+  const removeFilter = (filter) => {
+    setSelectedFilters((prevFilters) => {
+      const updatedFilters = { ...prevFilters };
+      delete updatedFilters[filter];
+      return updatedFilters;
+    });
+  };
+
   const resetFilters = () => {
     setSelectedFilters({});
     setSearchTerm("");
@@ -567,6 +575,38 @@ export const Products = () => {
                 </main>
               </div>
             </div>
+          </div>
+
+          <div className="applied-filters-container">
+            {Object.keys(selectedFilters).length > 0 && (
+              <div className="applied-filters">
+                <h2 className="text-lg font-medium text-gray-200 mb-2">
+                  Applied Filters:
+                </h2>
+                <div className="flex flex-wrap gap-2">
+                  {Object.entries(selectedFilters).map(([filter, value]) => (
+                    <div key={filter} className="flex items-center">
+                      <span className="bg-lightOrange text-black px-2 py-1 rounded-full">
+                        {filter}:{" "}
+                        {Array.isArray(value) ? value.join(", ") : value}
+                      </span>
+                      <button
+                        className="ml-2 text-gray-400 hover:text-gray-500 focus:outline-none"
+                        onClick={() => removeFilter(filter)}
+                      >
+                        <XMarkIcon className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <button
+                  className="clear-filters-btn mt-2 text-gray-400 hover:text-gray-500 focus:outline-none"
+                  onClick={resetFilters}
+                >
+                  Clear All Filters
+                </button>
+              </div>
+            )}
           </div>
 
           <div className="products-container w-full">
