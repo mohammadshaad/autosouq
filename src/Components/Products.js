@@ -417,7 +417,6 @@ export const Products = () => {
                                 {selectedFilters.productMillage?.max || 50000}
                               </span>
                             </div>
-                            
                           </form>
                         </Dialog.Panel>
                       </Transition.Child>
@@ -568,6 +567,30 @@ export const Products = () => {
                           <span className="ml-2 text-gray-600">
                             ${selectedFilters.productPrice?.min || 0} - $
                             {selectedFilters.productPrice?.max || 50000}
+                          </span>
+                        </div>
+
+                        <div className="flex mt-4 flex-col gap-4 items-start justify-center">
+                          <label className="font-medium text-sm text-gray-900">
+                            Millage Range
+                          </label>
+                          <input
+                            type="range"
+                            min="0"
+                            max="50000"
+                            step="1000"
+                            value={selectedFilters.productMillage?.min || 0}
+                            onChange={(e) =>
+                              handleMillageChange(
+                                parseInt(e.target.value),
+                                selectedFilters.productMillage?.max || 50000
+                              )
+                            }
+                            className="w-full h-2 accent-lightOrange rounded-md"
+                          />
+                          <span className="ml-2 text-gray-600">
+                            {selectedFilters.productMillage?.min || 0} - $
+                            {selectedFilters.productMillage?.max || 50000}
                           </span>
                         </div>
                       </form>
