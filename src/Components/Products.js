@@ -435,7 +435,7 @@ export const Products = () => {
                               type="search"
                               name="search"
                               id="search"
-                              className="focus:ring-lightOrange focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
+                              className="focus:ring-lightOrange focus:text-gray-600 focus:border-lightOrange block w-full pl-10 sm:text-sm border-gray-300 rounded-full"
                               placeholder="Search"
                               value={searchTerm}
                               onChange={(e) => setSearchTerm(e.target.value)}
