@@ -706,8 +706,8 @@ export const Products = () => {
                       </div>
 
                       <div className="flex items-center justify-center w-full md:flex-row flex-col">
-                        <div className="w-full text-lg">
-                          AED {product.ProductPrice}.00
+                        <div className="w-full text-[16px]">
+                          {product.ProductPrice}.00 AED
                         </div>
                         <button
                           className="login-btn !p-3 !font-light !text-sm flex items-center justify-center gap-2"
