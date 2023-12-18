@@ -162,7 +162,7 @@ function PaymentForm() {
                 id: product.ProductID,
                 name: product.ProductName || "",
                 price: product.ProductPrice || 0,
-                quantity: product.qty || 0,
+                // quantity: product.qty || 0,
               })),
               timestamp: firebase.database.ServerValue.TIMESTAMP,
             };

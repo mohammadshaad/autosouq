@@ -36,9 +36,9 @@ export const CartReducer = (state, action) => {
         return state;
       } else {
         product = action.product;
-        product["qty"] = 1;
-        product["TotalProductPrice"] = product.ProductPrice * product.qty;
-        updatedQty = totalQty + 1;
+        // product["qty"] = 1;
+        // product["TotalProductPrice"] = product.ProductPrice * product.qty;
+        // updatedQty = totalQty + 1;
         updatedPrice = totalPrice + product.ProductPrice;
 
         const updatedCart = [product, ...shoppingCart];
@@ -55,9 +55,9 @@ export const CartReducer = (state, action) => {
 
     case "INC":
       product = action.cart;
-      product.qty = ++product.qty;
-      product.TotalProductPrice = product.qty * product.ProductPrice;
-      updatedQty = totalQty + 1;
+      // product.qty = ++product.qty;
+      // product.TotalProductPrice = product.qty * product.ProductPrice;
+      // updatedQty = totalQty + 1;
       updatedPrice = totalPrice + product.ProductPrice;
       index = shoppingCart.findIndex((cart) => cart.ProductID === action.id);
       shoppingCart[index] = product;
@@ -74,9 +74,9 @@ export const CartReducer = (state, action) => {
     case "DEC":
       product = action.cart;
       if (product.qty > 1) {
-        product.qty = product.qty - 1;
-        product.TotalProductPrice = product.qty * product.ProductPrice;
-        updatedPrice = totalPrice - product.ProductPrice;
+        // product.qty = product.qty - 1;
+        // product.TotalProductPrice = product.qty * product.ProductPrice;
+        // updatedPrice = totalPrice - product.ProductPrice;
         updatedQty = totalQty - 1;
         index = shoppingCart.findIndex((cart) => cart.ProductID === action.id);
         shoppingCart[index] = product;
@@ -98,8 +98,8 @@ export const CartReducer = (state, action) => {
         (product) => product.ProductID !== action.id
       );
       product = action.cart;
-      updatedQty = totalQty - product.qty;
-      updatedPrice = totalPrice - product.qty * product.ProductPrice;
+      // updatedQty = totalQty - product.qty;
+      // updatedPrice = totalPrice - product.qty * product.ProductPrice;
 
       // Update localStorage with the filtered cart data
       localStorage.setItem("cart", JSON.stringify(filtered));
