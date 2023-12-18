@@ -92,8 +92,8 @@ const filters = [
     id: "ServiceHistory",
     name: "Service History",
     options: [
-      { value: "Yes", label: "Yes", checked: false },
-      { value: "No", label: "No", checked: false },
+      { value: "Serviced", label: "Yes", checked: false },
+      { value: "Not Serviced", label: "No", checked: false },
     ],
   },
 ];
