@@ -663,8 +663,8 @@ export const Products = () => {
                       animate={inView ? { opacity: 1 } : { opacity: 0 }}
                       transition={{ duration: 0.5 }}
                     >
-                      <div className="product-img">
-                        <img src={product.ProductImg} alt="not found" />
+                      <div className="product-img flex-shrink-0 flex-grow-0 ">
+                        <img src={product.ProductImg} alt="not found" className="flex flex-shrink-0 flex-grow-0"/>
                       </div>
                       <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
                         <div className="flex flex-col items-start justify-center ">
