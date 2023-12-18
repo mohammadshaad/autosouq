@@ -664,7 +664,11 @@ export const Products = () => {
                       transition={{ duration: 0.5 }}
                     >
                       <div className="product-img flex-shrink-0 flex-grow-0 ">
-                        <img src={product.ProductImg} alt="not found" className="flex flex-shrink-0 flex-grow-0"/>
+                        <img
+                          src={product.ProductImg}
+                          alt="not found"
+                          className="flex flex-shrink-0 flex-grow-0"
+                        />
                       </div>
                       <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
                         <div className="flex flex-col items-start justify-center ">
@@ -700,6 +704,18 @@ export const Products = () => {
                             </div>
                             <div className="font-medium">
                               {product.ProductCity}
+                            </div>
+                          </div>
+
+                          <div className="flex items-center justify-center">
+                            <div>
+                              <Squares2X2Icon
+                                className="w-4 text-black"
+                                aria-hidden="true"
+                              />
+                            </div>
+                            <div className="font-medium">
+                              {product.RegionalSpecs}
                             </div>
                           </div>
                         </div>

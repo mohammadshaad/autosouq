@@ -16,7 +16,15 @@ export const ProductsContextProvider = ({ children }) => {
         ProductType: doc.data().ProductType,
         ProductMake: doc.data().ProductMake,
         ProductCity: doc.data().ProductCity, 
-        ProductRating: doc.data().ProductRating,
+        ProductYear: doc.data().ProductYear,
+        ProductMileage: doc.data().ProductMileage,
+        RegionalSpecs: doc.data().RegionalSpecs,
+        SeatingCapacity: doc.data().SeatingCapacity,
+        ServiceHistory: doc.data().ServiceHistory,
+        AccidentHistory: doc.data().AccidentHistory,
+        Features: doc.data().Features,
+        Contact: doc.data().Contact,
+        
       }));
 
       // console.log(productsData); // Debug statement
