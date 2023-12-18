@@ -17,6 +17,8 @@ export const AddProducts = () => {
   const [seatingCapacity, setSeatingCapacity] = useState("");
   const [serviceHistory, setServiceHistory] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [alert, setAlert] = useState({ type: "", message: "" });
 
   const types = ["image/png", "image/jpeg"]; // image types
 
@@ -33,62 +35,78 @@ export const AddProducts = () => {
 
   const addProduct = (e) => {
     e.preventDefault();
-    const uploadTask = storage
-      .ref(`car_images/${productImg.name}`)
-      .put(productImg);
-    uploadTask.on(
-      "state_changed",
-      (snapshot) => {
-        const progress =
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        console.log(progress);
-      },
-      (err) => setError(err.message),
-      () => {
-        storage
-          .ref("car_images")
-          .child(productImg.name)
-          .getDownloadURL()
-          .then((url) => {
-            db.collection("Products")
-              .add({
-                ProductName: productName,
-                ProductPrice: Number(productPrice),
-                ProductImg: url,
-                AccidentHistory: accidentHistory,
-                Contact: contact,
-                Features: features,
-                ProductCity: productCity,
-                ProductMake: productMake,
-                ProductMileage: productMileage,
-                ProductType: productType,
-                ProductYear: Number(productYear),
-                RegionalSpecs: regionalSpecs,
-                SeatingCapacity: seatingCapacity,
-                ServiceHistory: serviceHistory,
-              })
-              .then(() => {
-                setProductName("");
-                setProductPrice(0);
-                setProductImg("");
-                setAccidentHistory("");
-                setContact("");
-                setFeatures("");
-                setProductCity("");
-                setProductMake("");
-                setProductMileage("");
-                setProductType("");
-                setProductYear(0);
-                setRegionalSpecs("");
-                setSeatingCapacity("");
-                setServiceHistory("");
-                setError("");
-                document.getElementById("file").value = "";
-              })
-              .catch((err) => setError(err.message));
-          });
-      }
-    );
+    setLoading(true);
+
+    try {
+      const uploadTask = storage
+        .ref(`car_images/${productImg.name}`)
+        .put(productImg);
+      uploadTask.on(
+        "state_changed",
+        (snapshot) => {
+          const progress =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(progress);
+        },
+        (err) => {
+          setLoading(false);
+          setError(err.message);
+        },
+        () => {
+          storage
+            .ref("car_images")
+            .child(productImg.name)
+            .getDownloadURL()
+            .then((url) => {
+              db.collection("Products")
+                .add({
+                  ProductName: productName,
+                  ProductPrice: Number(productPrice),
+                  ProductImg: url,
+                  AccidentHistory: accidentHistory,
+                  Contact: contact,
+                  Features: features,
+                  ProductCity: productCity,
+                  ProductMake: productMake,
+                  ProductMileage: productMileage,
+                  ProductType: productType,
+                  ProductYear: Number(productYear),
+                  RegionalSpecs: regionalSpecs,
+                  SeatingCapacity: seatingCapacity,
+                  ServiceHistory: serviceHistory,
+                })
+                .then(() => {
+                  setLoading(false);
+                  setAlert({ type: "success", message: "Upload successful!" });
+
+                  setProductName("");
+                  setProductPrice(0);
+                  setProductImg("");
+                  setAccidentHistory("");
+                  setContact("");
+                  setFeatures("");
+                  setProductCity("");
+                  setProductMake("");
+                  setProductMileage("");
+                  setProductType("");
+                  setProductYear(0);
+                  setRegionalSpecs("");
+                  setSeatingCapacity("");
+                  setServiceHistory("");
+                  setError("");
+                  document.getElementById("file").value = "";
+                })
+                .catch((err) => {
+                  setLoading(false);
+                  setError(err.message);
+                });
+            });
+        }
+      );
+    } catch (error) {
+      setLoading(false);
+      setError(error.message);
+    }
   };
 
   return (
@@ -220,7 +238,13 @@ export const AddProducts = () => {
           SUBMIT
         </button>
       </form>
+      {loading && <div className="loader">Loading...</div>}
       {error && <span className="error-msg">{error}</span>}
+      {alert.type === "success" && (
+        <div className="alert alert-success" role="alert">
+          {alert.message}
+        </div>
+      )}
     </div>
   );
 };
