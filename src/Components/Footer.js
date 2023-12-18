@@ -16,7 +16,7 @@ function Footer() {
 
   return (
     <div className="mt-20">
-      <footer className="bg-white ">
+      <footer className="bg-lightOrange ">
         <div className="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8" ref={ref}>
           <motion.div
             initial="hidden"
