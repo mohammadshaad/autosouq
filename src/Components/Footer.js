@@ -34,11 +34,11 @@ function Footer() {
                   <h2 className="mb-6 text-sm font-semibold  uppercase text-gray-900">
                     Follow us
                   </h2>
-                  <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <ul className="text-gray-800 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                       <a
                         href="https://www.instagram.com/enactusvitc"
-                        className="hover:underline text-gray-300 hover:text-lightOrange "
+                        className="hover:underline text-gray-800 hover:text-gray-700 "
                         target="_blank"
                       >
                         Instagram
@@ -47,7 +47,7 @@ function Footer() {
                     <li>
                       <a
                         href="https://in.linkedin.com/company/enactusvitc"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
+                        className="hover:underline text-gray-800 hover:text-gray-700"
                         target="_blank"
                       >
                         LinkedIn
@@ -59,11 +59,11 @@ function Footer() {
                   <h2 className="mb-6 text-sm font-semibold  uppercase text-gray-900">
                     Legal
                   </h2>
-                  <ul className="text-gray-500 dark:text-gray-400 font-medium">
+                  <ul className="text-gray-800 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                       <a
                         href="/privacy-policy"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
+                        className="hover:underline text-gray-800 hover:text-gray-700"
                         target="__blank"
                       >
                         Privacy Policy
@@ -72,7 +72,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/terms-of-service"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
+                        className="hover:underline text-gray-800 hover:text-gray-700"
                         target="__blank"
                       >
                         Terms &amp; Conditions
@@ -81,7 +81,7 @@ function Footer() {
                     <li className="mb-4">
                       <a
                         href="/contact-us"
-                        className="hover:underline text-gray-300 hover:text-lightOrange"
+                        className="hover:underline text-gray-800 hover:text-gray-700"
                         target="__blank"
                       >
                         Contact Us
@@ -93,13 +93,13 @@ function Footer() {
             </div>
             <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
             <div className="sm:flex sm:items-center sm:justify-between">
-              <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
+              <span className="text-sm text-gray-800 sm:text-center dark:text-gray-400">
                 © {
                   new Date().getFullYear()
                 } {" "}
                 <a
                   href="https://www.autosouq.com/"
-                  className="hover:underline text-black hover:text-lightOrange"
+                  className="hover:underline text-black hover:text-gray-700"
                 >
                   AutoSouq
                 </a>
