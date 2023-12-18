@@ -83,7 +83,7 @@ export class App extends Component {
               <Route path="/payment" component={() => <Payment />} />
 
               {/* add products */}
-              {/* <Route path="/addproducts" component={AddProducts} /> */}
+              <Route path="/addproducts" component={AddProducts} />
               {/* cashout */}
               {/* <Route
                 path="/cashout"
