@@ -45,6 +45,35 @@ const filters = [
       { value: "Chevrolet", label: "Chevrolet", checked: false },
       { value: "Volkswagen", label: "Volkswagen", checked: false },
       { value: "Jeep", label: "Jeep", checked: false },
+      { value: "Kia", label: "Kia", checked: false },
+      { value: "Jetour", label: "Jetour", checked: false },
+      { value: "Lotus", label: "Lotus", checked: false },
+      { value: "Land Rover", label: "Land Rover", checked: false },
+      { value: "Lincoln", label: "Lincoln", checked: false },
+      { value: "Lexus", label: "Lexus", checked: false },
+      { value: "Maxus", label: "Maxus", checked: false },
+      { value: "Maserati", label: "Maserati", checked: false },
+      { value: "Mazda", label: "Mazda", checked: false },
+      { value: "Mclaren", label: "Mclaren", checked: false },
+      { value: "Mini", label: "Mini", checked: false },
+      { value: "Opel", label: "Opel", checked: false },
+      { value: "Dodge", label: "Dodge", checked: false },
+      { value: "Devel", label: "Devel", checked: false },
+      { value: "Changan", label: "Changan", checked: false },
+      { value: "Chrysler", label: "Chrysler", checked: false },
+      { value: "Aston Martin", label: "Aston Martin", checked: false },
+      { value: "Cadillac", label: "Cadillac", checked: false },
+      { value: "Borgward", label: "Borgward", checked: false },
+      { value: "BYD", label: "BYD", checked: false },
+      { value: "Abarth", label: "Abarth", checked: false },
+      { value: "Alfa Romeo", label: "Alfa Romeo", checked: false },
+      { value: "GMC", label: "GMC", checked: false },
+      { value: "Genesis", label: "Genesis", checked: false },
+      { value: "Isuzu", label: "Isuzu", checked: false },
+      { value: "Infinti", label: "Infinti", checked: false },
+      { value: "Haval", label: "Haval", checked: false },
+      { value: "Foton", label: "Foton", checked: false },
+      { value: "Peugeot", label: "Peugeot", checked: false },
     ],
   },
   {
@@ -762,7 +791,9 @@ export const Products = () => {
 
                         <div className="flex items-center justify-between w-full">
                           <div className="flex flex-col items-start justify-center gap-1">
-                            <span className="text-gray-400 text-xs">Mileage</span>{" "}
+                            <span className="text-gray-400 text-xs">
+                              Mileage
+                            </span>{" "}
                             <div className="flex items-center justify-start gap-1">
                               <div>
                                 <svg
