@@ -22,7 +22,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
       animate="visible"
     >
       <div className="landing__header__container p-4 md:p-20 md:flex-row flex-col -z-50">
-        <div className="landing__header w-1/2">
+        <div className="landing__header w-1/2 -z-50">
           <h1 className="landing__header__main ">
             Find the best deals on used cars in the Gulf
           </h1>
@@ -98,10 +98,10 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
           </Link>
 
           <div className="mt-4 font-normal text-gray-300 text-lg md:text-2xl max-w-lg px-4">
-            Tired of endlessly scouring multiple sites for the perfect car? We've
-            got you covered. AutoSouq seamlessly consolidates listings from
-            major sites in the GCC, ensuring that your dream car is just a few
-            clicks away.
+            Tired of endlessly scouring multiple sites for the perfect car?
+            We've got you covered. AutoSouq seamlessly consolidates listings
+            from major sites in the GCC, ensuring that your dream car is just a
+            few clicks away.
           </div>
         </div>
 
