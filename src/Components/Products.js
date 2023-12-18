@@ -221,12 +221,12 @@ export const Products = () => {
         <div className=" flex md:flex-row flex-col gap-10 md:gap-0 items-start md:items-start justify-center md:justify-between w-full">
           <div className=" w-full px-14 lg:px-0 md:w-1/3 ">
             <div className=" bg-gray-900   shadow-lg rounded-full md:rounded-3xl">
-              <div className="">
+              <div className="z-50">
                 {/* Mobile filter dialog */}
                 <Transition.Root show={mobileFiltersOpen} as={Fragment}>
                   <Dialog
                     as="div"
-                    className="relative z-40 md:hidden"
+                    className="relative z-50 md:hidden"
                     onClose={setMobileFiltersOpen}
                   >
                     <Transition.Child
@@ -701,7 +701,7 @@ export const Products = () => {
                       </div>
                       <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
                         <div className="flex flex-col items-start justify-center ">
-                          <div className="product-name flex items-center justify-start w-full text-3xl font-bold">
+                          <div className="product-name flex items-center justify-start w-full text-3xl font-bold flex-shrink-0">
                             {product.ProductName}
                           </div>
                           <div className="font-medium text-lg text-gray-500">
