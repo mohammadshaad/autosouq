@@ -21,7 +21,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
       initial="hidden"
       animate="visible"
     >
-      <div className="landing__header__container pl-5 md:p-20 md:flex-row flex-col">
+      <div className="landing__header__container p-4 md:p-20 md:flex-row flex-col">
         <div className="landing__header w-1/2">
           <h1 className="landing__header__main ">
             Find the best deals on used cars in the Gulf
