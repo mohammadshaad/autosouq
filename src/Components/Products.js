@@ -399,7 +399,7 @@ export const Products = () => {
                                     "object" && (
                                     <>
                                       {selectedFilters.productMileage.min || 0}{" "}
-                                      - {" "}
+                                      -{" "}
                                       {selectedFilters.productMileage.max ||
                                         300000}
                                     </>
@@ -737,26 +737,28 @@ export const Products = () => {
               )}
             </div>
             {displayedProductCount < filteredProducts.length && (
-              <button
-                className="see-more-btn flex items-center justify-center gap-4"
-                onClick={loadMoreProducts}
-              >
-                See More
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-6 h-6"
+              <div className="w-full flex items-center justify-center">
+                <button
+                  className="login flex items-center justify-center gap-4"
+                  onClick={loadMoreProducts}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </button>
+                  See More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    className="w-6 h-6"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                    />
+                  </svg>
+                </button>
+              </div>
             )}
           </div>
         </div>
