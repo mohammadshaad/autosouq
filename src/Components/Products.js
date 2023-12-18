@@ -61,7 +61,7 @@ const filters = [
     ],
   },
   {
-    id: "regionalSpecs",
+    id: "RegionalSpecs",
     name: "Regional Specs",
     options: [
       { value: "GCC specs", label: "GCC specs", checked: false },
@@ -73,7 +73,7 @@ const filters = [
     ],
   },
   {
-    id: "seatingCapacity",
+    id: "SeatingCapacity",
     name: "Seating Capacity",
     options: [
       { value: "2", label: "2", checked: false },
@@ -84,12 +84,12 @@ const filters = [
     ],
   },
   {
-    id: "accidentHistory",
+    id: "AccidentHistory",
     name: "Accident History",
     options: [{ value: "No Accidents", label: "no accidents", checked: false }],
   },
   {
-    id: "serviceHistory",
+    id: "ServiceHistory",
     name: "Service History",
     options: [
       { value: "Yes", label: "Yes", checked: false },
@@ -133,12 +133,12 @@ export const Products = () => {
     }));
   };
 
-  const handleMillageChange = (minMillage, maxMillage) => {
+  const handleMileageChange = (minMileage, maxMileage) => {
     setSelectedFilters((prevFilters) => ({
       ...prevFilters,
-      productMillage: {
-        min: minMillage,
-        max: maxMillage,
+      productMileage: {
+        min: minMileage,
+        max: maxMileage,
       },
     }));
   };
@@ -377,30 +377,30 @@ export const Products = () => {
 
                             <div className="flex mt-4 flex-col gap-4 items-start justify-center px-4 ">
                               <label className="font-medium text-3xl text-gray-200">
-                                Millage Range
+                                Mileage Range
                               </label>
                               <input
                                 type="range"
                                 min="0"
                                 max="50000"
                                 step="1000"
-                                value={selectedFilters.productMillage?.min || 0}
+                                value={selectedFilters.productMileage?.min || 0}
                                 onChange={(e) =>
-                                  handleMillageChange(
+                                  handleMileageChange(
                                     parseInt(e.target.value),
-                                    selectedFilters.productMillage?.max || 50000
+                                    selectedFilters.productMileage?.max || 50000
                                   )
                                 }
                                 className="w-full h-2 accent-lightOrange rounded-md"
                               />
                               <span className="ml-2 text-gray-400">
-                                {selectedFilters.productMillage &&
-                                  typeof selectedFilters.productMillage ===
+                                {selectedFilters.productMileage &&
+                                  typeof selectedFilters.productMileage ===
                                     "object" && (
                                     <>
-                                      {selectedFilters.productMillage.min || 0}{" "}
+                                      {selectedFilters.productMileage.min || 0}{" "}
                                       - {" "}
-                                      {selectedFilters.productMillage.max ||
+                                      {selectedFilters.productMileage.max ||
                                         300000}
                                     </>
                                   )}
@@ -567,29 +567,29 @@ export const Products = () => {
 
                         <div className="flex mt-4 flex-col gap-4 items-start justify-center">
                           <label className="font-medium text-sm text-gray-200">
-                            Millage Range
+                            Mileage Range
                           </label>
                           <input
                             type="range"
                             min="0"
                             max="50000"
                             step="1000"
-                            value={selectedFilters.productMillage?.min || 0}
+                            value={selectedFilters.productMileage?.min || 0}
                             onChange={(e) =>
-                              handleMillageChange(
+                              handleMileageChange(
                                 parseInt(e.target.value),
-                                selectedFilters.productMillage?.max || 50000
+                                selectedFilters.productMileage?.max || 50000
                               )
                             }
                             className="w-full h-2 accent-lightOrange rounded-md"
                           />
                           <span className="ml-2 text-gray-400">
-                            {selectedFilters.productMillage &&
-                              typeof selectedFilters.productMillage ===
+                            {selectedFilters.productMileage &&
+                              typeof selectedFilters.productMileage ===
                                 "object" && (
                                 <>
-                                  {selectedFilters.productMillage.min || 0} -{" "}
-                                  {selectedFilters.productMillage.max || 300000}
+                                  {selectedFilters.productMileage.min || 0} -{" "}
+                                  {selectedFilters.productMileage.max || 300000}
                                 </>
                               )}
                           </span>
