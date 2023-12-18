@@ -64,12 +64,12 @@ const filters = [
     id: "RegionalSpecs",
     name: "Regional Specs",
     options: [
-      { value: "GCC specs", label: "GCC specs", checked: false },
-      { value: "American specs", label: "American specs", checked: false },
-      { value: "Canadian specs", label: "Canadian specs", checked: false },
-      { value: "European specs", label: "European specs", checked: false },
-      { value: "Chinese specs", label: "Chinese specs", checked: false },
-      { value: "Japanese specs", label: "Japanese specs", checked: false },
+      { value: "GCC", label: "GCC", checked: false },
+      { value: "American", label: "American", checked: false },
+      { value: "Canadian", label: "Canadian", checked: false },
+      { value: "European", label: "European", checked: false },
+      { value: "Chinese", label: "Chinese", checked: false },
+      { value: "Japanese", label: "Japanese", checked: false },
     ],
   },
   {
@@ -367,7 +367,7 @@ export const Products = () => {
                                     "object" && (
                                     <>
                                       {selectedFilters.productPrice.min || 0} -
-                                      $
+                                      AED
                                       {selectedFilters.productPrice.max ||
                                         50000}
                                     </>
@@ -558,7 +558,7 @@ export const Products = () => {
                               typeof selectedFilters.productPrice ===
                                 "object" && (
                                 <>
-                                  {selectedFilters.productPrice.min || 0} - $
+                                  {selectedFilters.productPrice.min || 0} - AED
                                   {selectedFilters.productPrice.max || 50000}
                                 </>
                               )}
@@ -707,7 +707,7 @@ export const Products = () => {
 
                       <div className="flex items-center justify-center w-full md:flex-row flex-col">
                         <div className="w-full text-lg">
-                          $ {product.ProductPrice}.00
+                          AED {product.ProductPrice}.00
                         </div>
                         <button
                           className="login-btn !p-3 !font-light !text-sm flex items-center justify-center gap-2"
