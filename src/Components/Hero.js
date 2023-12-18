@@ -16,12 +16,12 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
 
   return (
     <motion.div
-      className="landing__container py-20"
+      className="landing__container py-20 -z-50"
       variants={containerVariants}
       initial="hidden"
       animate="visible"
     >
-      <div className="landing__header__container p-4 md:p-20 md:flex-row flex-col">
+      <div className="landing__header__container p-4 md:p-20 md:flex-row flex-col -z-50">
         <div className="landing__header w-1/2">
           <h1 className="landing__header__main ">
             Find the best deals on used cars in the Gulf

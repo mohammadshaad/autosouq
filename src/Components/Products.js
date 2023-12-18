@@ -216,7 +216,7 @@ export const Products = () => {
   };
 
   return (
-    <div className="products-main-container !z-50">
+    <div className="products-main-container z-50">
       <div className="z-50 products-wrapper py-20">
         <div className="z-50 flex md:flex-row flex-col gap-10 md:gap-0 items-start md:items-start justify-center md:justify-between w-full">
           <div className="z-50 w-full px-14 lg:px-0 md:w-1/3 ">
@@ -226,7 +226,7 @@ export const Products = () => {
                 <Transition.Root show={mobileFiltersOpen} as={Fragment}>
                   <Dialog
                     as="div"
-                    className="relative !z-50 md:hidden"
+                    className="relative z-50 md:hidden"
                     onClose={setMobileFiltersOpen}
                   >
                     <Transition.Child
