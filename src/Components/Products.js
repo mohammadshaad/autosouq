@@ -216,7 +216,7 @@ export const Products = () => {
   };
 
   return (
-    <div className="products-main-container">
+    <div className="products-main-container z-50">
       <div className="products-wrapper py-20">
         <div className=" flex md:flex-row flex-col gap-10 md:gap-0 items-start md:items-start justify-center md:justify-between w-full">
           <div className=" w-full px-14 lg:px-0 md:w-1/3 ">

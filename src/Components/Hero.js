@@ -105,7 +105,7 @@ export const Hero = ({ setSearchTerm, setSelectedFilter }) => {
           </div>
         </div>
 
-        <div className="flex items-center justify-end w-full  ">
+        <div className="flex items-center justify-end w-full -z-50">
           <img src={CarImage} alt="car" className="w-full" />
         </div>
       </div>
