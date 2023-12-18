@@ -701,7 +701,7 @@ export const Products = () => {
                       </div>
                       <div className="flex flex-col gap-4 px-2 items-start justify-center w-full py-4">
                         <div className="flex flex-col items-start justify-center ">
-                          <div className="product-name flex items-center justify-start w-full text-3xl font-bold flex-shrink-0">
+                          <div className="product-name flex items-center justify-start w-full text-2xl font-bold flex-shrink-0">
                             {product.ProductName}
                           </div>
                           <div className="font-medium text-lg text-gray-500">
