@@ -1,79 +1,38 @@
-# Notes for personal use
+# AutoSouq Notes
 
-## Figma Design
+This is a markdown file for taking notes related to the AutoSouq project.
 
-- https://www.figma.com/file/4tJq1PRVM9xCeNBXOe8xlm/Autosouqq?type=design&node-id=0%3A1&mode=design&t=7o1F8GWTVlZyPMZb-1
+## Project Overview
 
-## Websites to scrap for the data
+AutoSouq is an online marketplace for buying and selling automobiles. The platform allows users to browse through a wide range of vehicles, view detailed information about each listing, and connect with sellers to negotiate and finalize the purchase.
 
-- Dubizzle: 1.9 million
-- Yalla: 2.5 Million
-- Carswitch: 250K
-- Buyanycar: ~5K
-- Cars24: 5.7 Million
-- Automall: 260K
-- DubiCars: 1.26 Million
-- Opensooq: 3.3 Million
-- GTA Cars: 51K
-- Yalla Deals: 100K
-- Autozel: 21K
-- Purplepreowned: 8.9k
-- Facebook Marketplace: 800K
+## Features
 
-## Filters
+- User registration and authentication
+- Vehicle listing and search functionality
+- Detailed vehicle information including specifications, photos, and pricing
+- Messaging system for communication between buyers and sellers
+- Secure payment processing for transactions
+- User reviews and ratings for sellers
+- Admin dashboard for managing listings, users, and transactions
 
-- Make:
-  Toyota
-  Mitsubishi
-  Nissan
-  Hyundai
-  Ford
-  Honda
-  Chevrolet
-  Volkswagen
-  Jeep
-  Toyota
-  Land Rover
-  Audi
-  Ferrari
-  Mercedes-Benz
+## Technologies Used
 
-- Type:
-  SUV
-  Sedan
-  Hatchback
-  Truck
-  Coupe
-  Convertible
-  Luxury
+- Front-end: HTML, CSS, JavaScript, React
+- Back-end: Node.js, Express.js
+- Database: MongoDB
+- Payment Gateway: Stripe
 
-- City:
-  Abu Dhabi
-  Sharjah
-  Dubai
-  Ajman
-  Al Ain
-  Riyadh
-  Jeddah
-  Doha
-  Muscat
-  Kuwait City
-  Manama
+## Next Steps
 
-## Changes suggested
+- Design and implement the user registration and authentication system
+- Create the database schema for storing vehicle listings and user information
+- Develop the front-end components for browsing and searching vehicles
+- Integrate the messaging system for communication between users
+- Implement the payment processing functionality using Stripe API
+- Set up the admin dashboard for managing the platform
 
-- [ ] Change the hero background image
-- [ ] Change the no product found svg
-- [ ] Remove the Kilometer filter
-- [ ] Add the content 
+## Resources
 
-
-
-## Content
-
-- Hero Section
-    - Your search for the ideal car ends here
-    - Find the best deals on used cars in UAE
-
-- About Section (below filters)
-    - Tired of endlessly scouring multiple sites for the perfect car? We've got you covered. AutoSouq seamlessly consolidates listings from major sites in the GCC, ensuring that your dream car is just a few clicks away.
+- [AutoSouq GitHub Repository](https://github.com/your-username/autosouq)
+- [AutoSouq Design Mockups](https://www.figma.com/file/your-figma-file)
