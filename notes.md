@@ -32,7 +32,3 @@ AutoSouq is an online marketplace for buying and selling automobiles. The platfo
 - Implement the payment processing functionality using Stripe API
 - Set up the admin dashboard for managing the platform
 
-## Resources
-
-- [AutoSouq GitHub Repository](https://github.com/your-username/autosouq)
-- [AutoSouq Design Mockups](https://www.figma.com/file/your-figma-file)
