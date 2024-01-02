@@ -2,7 +2,6 @@
 
 AutoSouq is a project that aims to create an online marketplace for buying and selling automobiles. This platform provides a convenient and user-friendly interface for users to browse, search, and list vehicles for sale.
 
-
 ## Features
 
 - User registration and authentication
