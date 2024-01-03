@@ -678,7 +678,7 @@ export const Products = () => {
               {filteredProducts.length === 0 ? (
                 <div className="text-gray-400 font-light text-2xl flex-col flex items-center justify-center">
                   <img src={ProductNotFound} alt="" className="w-96 mx-auto" />
-                  No cars to display.
+                  Loading...
                 </div>
               ) : (
                 filteredProducts
