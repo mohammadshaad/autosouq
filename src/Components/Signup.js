@@ -12,6 +12,7 @@ export const Signup = (props) => {
   const [mobile, setMobile] = useState("");
   const [address, setAddress] = useState("");
   const [profileImage, setProfileImage] = useState(null);
+  const [role, setRole] = useState("user");
   const [error, setError] = useState("");
 
   const handleImageChange = (e) => {
@@ -31,16 +32,19 @@ export const Signup = (props) => {
         if (profileImage) {
           storageRef.put(profileImage).then((snapshot) => {
             snapshot.ref.getDownloadURL().then((downloadURL) => {
+              const userData = {
+                Name: name,
+                Email: email,
+                Password: password,
+                Mobile: mobile,
+                Address: address,
+                ProfileImage: downloadURL,
+                Role: role,
+              };
+
               db.collection("SignedUpUsersData")
                 .doc(cred.user.uid)
-                .set({
-                  Name: name,
-                  Email: email,
-                  Password: password,
-                  Mobile: mobile,
-                  Address: address,
-                  ProfileImage: downloadURL,
-                })
+                .set(userData)
                 .then(() => {
                   setName("");
                   setEmail("");
@@ -48,6 +52,7 @@ export const Signup = (props) => {
                   setMobile("");
                   setAddress("");
                   setProfileImage(null);
+                  setRole("user");
                   setError("");
                   props.history.push("/login");
                 })
@@ -55,22 +60,25 @@ export const Signup = (props) => {
             });
           });
         } else {
-          // If no profile image selected
+          const userData = {
+            Name: name,
+            Email: email,
+            Password: password,
+            Mobile: mobile,
+            Address: address,
+            Role: role,
+          };
+
           db.collection("SignedUpUsersData")
             .doc(cred.user.uid)
-            .set({
-              Name: name,
-              Email: email,
-              Password: password,
-              Mobile: mobile,
-              Address: address,
-            })
+            .set(userData)
             .then(() => {
               setName("");
               setEmail("");
               setPassword("");
               setMobile("");
               setAddress("");
+              setRole("user");
               setError("");
               props.history.push("/login");
             })
@@ -86,14 +94,17 @@ export const Signup = (props) => {
       .signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
+        const userData = {
+          Name: user.displayName,
+          Email: user.email,
+          Mobile: mobile,
+          Address: address,
+          Role: role,
+        };
+
         db.collection("SignedUpUsersData")
           .doc(user.uid)
-          .set({
-            Name: user.displayName,
-            Email: user.email,
-            Mobile: mobile,
-            Address: address,
-          })
+          .set(userData)
           .then(() => {
             props.history.push("/login");
           })
@@ -108,14 +119,17 @@ export const Signup = (props) => {
       .signInWithPopup(provider)
       .then((result) => {
         const user = result.user;
+        const userData = {
+          Name: user.displayName,
+          Email: user.email,
+          Mobile: mobile,
+          Address: address,
+          Role: role,
+        };
+
         db.collection("SignedUpUsersData")
           .doc(user.uid)
-          .set({
-            Name: user.displayName,
-            Email: user.email,
-            Mobile: mobile,
-            Address: address,
-          })
+          .set(userData)
           .then(() => {
             props.history.push("/login");
           })
@@ -134,12 +148,24 @@ export const Signup = (props) => {
               Create an account to get started!
             </h5>
           </div>
-          <form autoComplete="off" className="login-form" onSubmit={signup}>
+          <form
+            autoComplete="off"
+            className="login-form gap-6"
+            onSubmit={signup}
+          >
             <label htmlFor="profileImage" className="profileImage-label">
               Profile Image
             </label>
             <input type="file" accept="image/*" onChange={handleImageChange} />
-
+            <select
+              className="role-select text-black placeholder-black focus:text-black w-full md:w-auto bg-gray-200 rounded-[10px]"
+              onChange={(e) => setRole(e.target.value)}
+              value={role}
+              required
+            >
+              <option value="user">User</option>
+              <option value="dealer">Dealer</option>
+            </select>
             <input
               type="text"
               className="email-input text-black placeholder-black focus:text-black"
@@ -148,7 +174,6 @@ export const Signup = (props) => {
               value={name}
               placeholder="Enter your name"
             />
-            <br />
             <input
               type="email"
               className="email-input text-black placeholder-black focus:text-black"
@@ -157,7 +182,6 @@ export const Signup = (props) => {
               value={email}
               placeholder="Enter your email"
             />
-            <br />
             <input
               type="password"
               className="password-input text-black placeholder-black focus:text-black"
@@ -166,7 +190,6 @@ export const Signup = (props) => {
               value={password}
               placeholder="Enter your password"
             />
-            <br />
             <input
               type="text"
               className="email-input text-black placeholder-black focus:text-black"
@@ -175,15 +198,7 @@ export const Signup = (props) => {
               value={mobile}
               placeholder="Enter your mobile number"
             />
-            <br />
-            {/* <input
-              type="text"
-              className="email-input text-black placeholder-black focus:text-black"
-              required
-              onChange={(e) => setAddress(e.target.value)}
-              value={address}
-              placeholder="Enter your address for shipping the product to you"
-            /> */}
+
             <br />
             <button type="submit" className="login-btn">
               SUBMIT

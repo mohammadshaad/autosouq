@@ -256,6 +256,11 @@ export const Navbar = () => {
                 LOGIN
               </Link>
             </span>
+            <span className="">
+              <Link to="login" className="navlink login">
+                LOGIN AS DEALER
+              </Link>
+            </span>
           </div>
         )}
       </div>
