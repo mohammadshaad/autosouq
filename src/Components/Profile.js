@@ -29,13 +29,14 @@ function Profile() {
   const [currentUserMobile, setCurrentUserMobile] = useState(null);
   const [currentUserAddress, setCurrentUserAddress] = useState(null);
   const [profileImageUrl, setProfileImageUrl] = useState(null);
+  const [role, setRole] = useState(null);
   const [isSignedIn, setIsSignedIn] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedUserName, setEditedUserName] = useState("");
   const [editedUserMobile, setEditedUserMobile] = useState("");
   const [editedUserEmail, setEditedUserEmail] = useState("");
   const [editedUserAddress, setEditedUserAddress] = useState("");
-  const [newProfileImage, setNewProfileImage] = useState(null); // New state for new profile image
+  const [newProfileImage, setNewProfileImage] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -52,6 +53,7 @@ function Profile() {
               setCurrentUserMobile(userData.Mobile);
               setCurrentUserAddress(userData.Address);
               setProfileImageUrl(userData.ProfileImage);
+              setRole(userData.Role);
             }
           });
       } else {
@@ -60,6 +62,7 @@ function Profile() {
         setCurrentUserMobile(null);
         setCurrentUserAddress(null);
         setProfileImageUrl(null);
+        setRole(null);
       }
     });
 
@@ -194,14 +197,14 @@ function Profile() {
                 className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
             </label>
-            <label className="flex flex-col">
+            {/* <label className="flex flex-col">
               <span className="text-gray-700">Address:</span>
               <textarea
                 value={editedUserAddress}
                 onChange={(e) => setEditedUserAddress(e.target.value)}
                 className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
               />
-            </label>
+            </label> */}
             <button
               type="submit"
               className="px-4 py-2 login-btn !w-full focus:outline-none focus:shadow-outline "
@@ -251,10 +254,20 @@ function Profile() {
               )}
             </div>
 
-            <h2 className="text-2xl font-bold text-gray-800 w-full text-center">
-              <span className="text-gray-600 mr-1"></span>
-              {currentUserName}
-            </h2>
+            <div className="flex items-center justify-center w-full flex-col">
+              <h2 className="text-2xl font-bold text-gray-800 w-full text-center">
+                {currentUserName}
+              </h2>
+              <p className="text-gray-800 mt-4 flex items-center justify-center w-full text-center ">
+                {role === "dealer" ? (
+                  <span className="text-gray-600 mr-1">Dealer</span>
+                ) : role === "user" ? (
+                  <span className="text-gray-600 mr-1">User</span>
+                ) : (
+                  <span className="text-gray-600 mr-1">Loading</span>
+                )}
+              </p>
+            </div>
             <p className="text-gray-800 mt-4 flex items-center justify-start">
               <span className="text-gray-600 mr-1">
                 <svg
@@ -294,7 +307,7 @@ function Profile() {
                 {currentUserEmail}
               </p>
             </div>
-            <div className="">
+            {/* <div className="">
               <p className="text-gray-800 flex items-center justify-start">
                 <span className="text-gray-600 mr-1 flex items-center justify-center">
                   <svg
@@ -322,7 +335,7 @@ function Profile() {
                   )}
                 </div>
               </p>
-            </div>
+            </div> */}
           </>
         )}
 
