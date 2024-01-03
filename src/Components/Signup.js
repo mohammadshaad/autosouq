@@ -166,14 +166,43 @@ export const Signup = (props) => {
               <option value="user">User</option>
               <option value="dealer">Dealer</option>
             </select>
-            <input
+            {role === "dealer" ? (
+              <input
+                type="text"
+                className="email-input text-black placeholder-black focus:text-black"
+                required
+                onChange={(e) => setAddress(e.target.value)}
+                value={address}
+                placeholder="Enter your TNR number"
+              />
+            ) : null}
+            {/* <input
               type="text"
               className="email-input text-black placeholder-black focus:text-black"
               required
               onChange={(e) => setName(e.target.value)}
               value={name}
               placeholder="Enter your name"
-            />
+            /> */}
+            {role === "dealer" ? (
+              <input
+                type="text"
+                className="email-input text-black placeholder-black focus:text-black"
+                required
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                placeholder="Enter dealer name"
+              />
+            ) : (
+              <input
+                type="text"
+                className="email-input text-black placeholder-black focus:text-black"
+                required
+                onChange={(e) => setName(e.target.value)}
+                value={name}
+                placeholder="Enter your name"
+              />
+            )}
             <input
               type="email"
               className="email-input text-black placeholder-black focus:text-black"
