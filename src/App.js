@@ -115,10 +115,10 @@ export class App extends Component {
                 path="/success"
                 component={() => <Success />} 
               /> */}
-              {/* <Route
-                path="/admin/dashboard"
+              <Route
+                path="/dashboard"
                 component={() => <AdminDashboard />}
-              /> */}
+              />
               <Route component={NotFound} />
             </Switch>
           </BrowserRouter>

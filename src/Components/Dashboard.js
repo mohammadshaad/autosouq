@@ -1,89 +1,88 @@
 import React, { useState, useEffect } from "react";
-import { realtimeDb } from "../Config/Config";
-import { Card, Typography } from "@material-tailwind/react";
+import { auth, db } from "../Config/Config";
+import { Link } from "react-router-dom";
 
-const Dashboard = () => {
-  const [orders, setOrders] = useState([]);
+function Dashboard() {
+  const [products, setProducts] = useState([]);
+  const [isDealer, setIsDealer] = useState(false);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await realtimeDb.ref("orders").once("value");
-        const data = response.val();
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        // Check the user role from the database
+        db.collection("SignedUpUsersData")
+          .doc(user.uid)
+          .get()
+          .then((snapshot) => {
+            const userData = snapshot.data();
+            if (userData && userData.Role === "dealer") {
+              setIsDealer(true);
+            }
+          });
 
-        if (data) {
-          const ordersArray = Object.keys(data).map((orderId) => ({
-            orderId,
-            ...data[orderId],
-          }));
-          setOrders(ordersArray);
-        } else {
-          setOrders([]);
-        }
-      } catch (error) {
-        console.error("Error fetching orders:", error);
+        // Fetch all products
+        db.collection("Products")
+          .get()
+          .then((querySnapshot) => {
+            const productsData = [];
+            querySnapshot.forEach((doc) => {
+              productsData.push({ id: doc.id, ...doc.data() });
+            });
+            setProducts(productsData);
+          })
+          .catch((error) => {
+            console.error("Error fetching products:", error);
+          });
       }
-    };
+    });
 
-    fetchData();
+    return () => unsubscribe();
   }, []);
 
   return (
-    <div className="container mx-auto mt-8 flex items-center justify-items-center flex-col">
-      <h1 className="text-3xl font-bold mb-4">Admin Dashboard</h1>
-
-      <div className="bg-white p-6 rounded-lg">
-        <h2 className="text-2xl font-bold mb-4">Order List</h2>
-
-        {orders.length === 0 ? (
-          <p>Loading...</p>
-        ) : (
-          <table className="min-w-full bg-white border border-gray-300 shadow-md">
-            <thead>
-              <tr>
-                <th className="py-2 px-4 border-b">Order ID</th>
-                <th className="py-2 px-4 border-b">Payment ID</th>
-                <th className="py-2 px-4 border-b">Name</th>
-                <th className="py-2 px-4 border-b">Mobile</th>
-                <th className="py-2 px-4 border-b">Email</th>
-                <th className="py-2 px-4 border-b">Address</th>
-                <th className="py-2 px-10 border-b">Products</th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => (
-                <tr key={order.orderId}>
-                  <td className="py-2 px-4 border-b">{order.orderId}</td>
-                  <td className="py-2 px-4 border-b">{order.paymentId}</td>
-                  <td className="py-2 px-4 border-b">
-                    {order.name.currentUserName}
-                  </td>
-                  <td className="py-2 px-4 border-b">
-                    {order.mobile.currentUserMobile}
-                  </td>
-                  <td className="py-2 px-4 border-b">
-                    {order.email.currentUserEmail}
-                  </td>
-                  <td className="py-2 px-4 border-b">
-                    {order.address.currentUserAddress}
-                  </td>
-                  <td className="py-2 px-4 border-b">
-                    <ul>
-                      {order.products?.map((product) => (
-                        <li key={product.id}>
-                          {product.name} - {product.quantity}
-                        </li>
-                      ))}
-                    </ul>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+    <div className="flex flex-col items-center justify-center h-screen bg-gray-100">
+      <div className="bg-white rounded-lg shadow-lg p-8 max-w-md w-full">
+        {isDealer && (
+          <div className="flex justify-between mb-4">
+            <Link
+              to="/add-product"
+              className="px-4 py-2 bg-green-500 text-white rounded focus:outline-none focus:shadow-outline"
+            >
+              Add Product
+            </Link>
+            <Link
+              to="/edit-products"
+              className="px-4 py-2 bg-blue-500 text-white rounded focus:outline-none focus:shadow-outline"
+            >
+              Edit Products
+            </Link>
+          </div>
         )}
+
+        <h2 className="text-2xl font-bold text-gray-800 mb-4">All Products</h2>
+
+        {products.length === 0 ? (
+          <p>No products available.</p>
+        ) : (
+          <ul>
+            {products.map((product) => (
+              <li key={product.id} className="mb-2">
+                <strong>{product.name}</strong> - ${product.price}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+      <div className="return-to-home w-full flex items-center justify-center mt-10">
+        <Link
+          to="/"
+          className="text-[#17191b]/50 hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+        >
+          Return to Home page
+        </Link>
       </div>
     </div>
   );
-};
+}
 
 export default Dashboard;
