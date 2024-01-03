@@ -15,6 +15,7 @@ export const Navbar = () => {
   const [profileImageUrl, setProfileImageUrl] = useState(null);
   const [isOpen, setIsOpen] = useState(true);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [role, setRole] = useState(null);
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -33,6 +34,7 @@ export const Navbar = () => {
             if (userData) {
               setCurrentUser(userData.Name);
               setProfileImageUrl(userData.ProfileImage);
+              setRole(userData.Role);
               console.log(
                 "Hey " +
                   userData.Name +
@@ -51,6 +53,7 @@ export const Navbar = () => {
         // No user is signed in.
         setCurrentUser(null);
         setProfileImageUrl(null);
+        setRole(null);
       }
     });
 
@@ -192,16 +195,30 @@ export const Navbar = () => {
                     >
                       Profile
                     </a>
-                    <Link
+                    {/* <Link
                       to="/wishlist"
                       className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
                       role="menuitem"
                     >
                       Wishlist
-                      {/* <span className="no-of-products relative bottom-2 left-1 px-2 py-1 !rounded-full">
-                        {totalQty}
-                      </span> */}
-                    </Link>
+                    </Link> */}
+                    {role === "dealer" ? (
+                      <Link
+                        to="/addproducts"
+                        className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                        role="menuitem"
+                      >
+                        Dashboard
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/wishlist"
+                        className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                        role="menuitem"
+                      >
+                        Wishlist
+                      </Link>
+                    )}
                     <a
                       href="#"
                       className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100  hover:text-lightOrange"
