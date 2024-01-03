@@ -37,6 +37,7 @@ function Profile() {
   const [editedUserEmail, setEditedUserEmail] = useState("");
   const [editedUserAddress, setEditedUserAddress] = useState("");
   const [newProfileImage, setNewProfileImage] = useState(null);
+  const [tnrNum, setTnrNum] = useState(null);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -54,6 +55,7 @@ function Profile() {
               setCurrentUserAddress(userData.Address);
               setProfileImageUrl(userData.ProfileImage);
               setRole(userData.Role);
+              setTnrNum(userData.TnrNum);
             }
           });
       } else {
@@ -63,6 +65,7 @@ function Profile() {
         setCurrentUserAddress(null);
         setProfileImageUrl(null);
         setRole(null);
+        setTnrNum(null);
       }
     });
 
@@ -90,8 +93,8 @@ function Profile() {
             Name: editedUserName,
             Email: editedUserEmail,
             Mobile: editedUserMobile,
-            Address: editedUserAddress,
-            ProfileImage: url, // Updated profile image URL
+            ProfileImage: url,
+            TnrNum: tnrNum,
           });
         });
       });
@@ -102,7 +105,8 @@ function Profile() {
         Email: editedUserEmail,
         Mobile: editedUserMobile,
         Address: editedUserAddress,
-        ProfileImage: profileImageUrl, // Keep the existing profile image URL
+        ProfileImage: profileImageUrl,
+        TnrNum: tnrNum,
       });
     }
   };
@@ -117,6 +121,7 @@ function Profile() {
         setCurrentUserMobile(data.Mobile);
         setCurrentUserAddress(data.Address);
         setProfileImageUrl(data.ProfileImage);
+        setTnrNum(data.TnrNum);
         setIsEditMode(false);
       })
       .catch((error) => {
@@ -170,6 +175,15 @@ function Profile() {
                 </label>
               </div>
             </div>
+            <label className="flex flex-col" htmlFor="tnrNum">
+              <span className="text-gray-700">TNR Number:</span>
+              <input
+                type="text"
+                value={tnrNum}
+                onChange={(e) => setTnrNum(e.target.value)}
+                className="px-3 py-2 border rounded focus:outline-none focus:text-black focus:shadow-outline focus:border-lightOrange"
+              />
+            </label>
             <label className="flex flex-col">
               <span className="text-gray-700">Name:</span>
               <input
@@ -255,10 +269,10 @@ function Profile() {
             </div>
 
             <div className="flex items-center justify-center w-full flex-col">
-              <h2 className="text-2xl font-bold text-gray-800 w-full text-center">
+              <h2 className="text-4xl font-bold text-gray-800 w-full text-center">
                 {currentUserName}
               </h2>
-              <p className="text-gray-800 mt-4 flex items-center justify-center w-full text-center ">
+              <p className="text-gray-800 flex items-center justify-center w-full text-center ">
                 {role === "dealer" ? (
                   <span className="text-gray-600 mr-1">Dealer</span>
                 ) : role === "user" ? (
@@ -267,6 +281,11 @@ function Profile() {
                   <span className="text-gray-600 mr-1">Loading</span>
                 )}
               </p>
+            </div>
+            <div className="flex items-center justify-center w-full flex-col">
+              <h2 className="text-lg font-bold text-gray-800 w-full text-center">
+                {tnrNum}
+              </h2>
             </div>
             <p className="text-gray-800 mt-4 flex items-center justify-start">
               <span className="text-gray-600 mr-1">

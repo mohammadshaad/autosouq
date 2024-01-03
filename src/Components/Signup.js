@@ -13,6 +13,7 @@ export const Signup = (props) => {
   const [address, setAddress] = useState("");
   const [profileImage, setProfileImage] = useState(null);
   const [role, setRole] = useState("user");
+  const [tnrNum, setTnrNum] = useState("");
   const [error, setError] = useState("");
 
   const handleImageChange = (e) => {
@@ -40,6 +41,7 @@ export const Signup = (props) => {
                 Address: address,
                 ProfileImage: downloadURL,
                 Role: role,
+                TnrNum: tnrNum,
               };
 
               db.collection("SignedUpUsersData")
@@ -53,6 +55,7 @@ export const Signup = (props) => {
                   setAddress("");
                   setProfileImage(null);
                   setRole("user");
+                  setTnrNum("");
                   setError("");
                   props.history.push("/login");
                 })
@@ -67,6 +70,7 @@ export const Signup = (props) => {
             Mobile: mobile,
             Address: address,
             Role: role,
+            TnrNum: tnrNum,
           };
 
           db.collection("SignedUpUsersData")
@@ -79,6 +83,7 @@ export const Signup = (props) => {
               setMobile("");
               setAddress("");
               setRole("user");
+              setTnrNum("");
               setError("");
               props.history.push("/login");
             })
@@ -100,6 +105,7 @@ export const Signup = (props) => {
           Mobile: mobile,
           Address: address,
           Role: role,
+          TnrNum: tnrNum,
         };
 
         db.collection("SignedUpUsersData")
@@ -125,6 +131,7 @@ export const Signup = (props) => {
           Mobile: mobile,
           Address: address,
           Role: role,
+          TnrNum: tnrNum,
         };
 
         db.collection("SignedUpUsersData")
@@ -171,8 +178,8 @@ export const Signup = (props) => {
                 type="text"
                 className="email-input text-black placeholder-black focus:text-black"
                 required
-                onChange={(e) => setAddress(e.target.value)}
-                value={address}
+                onChange={(e) => setTnrNum(e.target.value)}
+                value={tnrNum}
                 placeholder="Enter your TNR number"
               />
             ) : null}
