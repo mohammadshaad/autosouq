@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../images/autosouq-logo.svg";
+import Logo from "../images/autosouq-logo.png";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -26,7 +26,7 @@ function Footer() {
             <div className="md:flex md:justify-between">
               <div className="mb-6 md:mb-0">
                 <a href="https://www.enactusvitc.com/" className="flex items-center">
-                  <img src={Logo} className="h-32 mr-3 mb-10" alt="Enactus Logo" />
+                  <img src={Logo} className="w-60 pt-2" alt="AutoSouq Logo" />
                 </a>
               </div>
               <div className="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-2">

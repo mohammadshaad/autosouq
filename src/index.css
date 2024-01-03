@@ -62,7 +62,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 4px 30px;
+  padding: 18px 30px;
 }
 
 .navbox .logo {
@@ -73,7 +73,7 @@ body {
 }
 
 .navbox .logo img {
-  width: 140px;
+  width: 200px;
 }
 
 .navbox .rightside {

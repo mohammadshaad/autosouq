@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../images/autosouq-logo.svg";
+import logo from "../images/autosouq-logo.png";
 import { Link } from "react-router-dom";
 import { auth, db } from "../Config/Config";
 import { Icon } from "react-icons-kit";
