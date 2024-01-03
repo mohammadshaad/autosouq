@@ -37,7 +37,7 @@ function Footer() {
                   <ul className="text-gray-800 dark:text-gray-400 font-medium">
                     <li className="mb-4">
                       <a
-                        href="https://www.instagram.com/enactusvitc"
+                        href="https://www.instagram.com/autosouq.company"
                         className="hover:underline text-gray-800 hover:text-gray-700 "
                         target="_blank"
                       >
@@ -46,11 +46,11 @@ function Footer() {
                     </li>
                     <li>
                       <a
-                        href="https://in.linkedin.com/company/enactusvitc"
+                        href="https://www.facebook.com/autosouq.company?mibextid=gik2fB"
                         className="hover:underline text-gray-800 hover:text-gray-700"
                         target="_blank"
                       >
-                        LinkedIn
+                        Facebook
                       </a>
                     </li>
                   </ul>
