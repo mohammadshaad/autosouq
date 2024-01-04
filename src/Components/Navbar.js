@@ -109,8 +109,8 @@ export const Navbar = () => {
       </div> */}
 
       <div className="flex items-center justify-center w-full">
-        <div className="desktop-nav-menu ">
-          <Link to="/" className="logo  ">
+        <div className="desktop-nav-menu">
+          <Link to="/" className="logo">
             <img src={logo} alt="AutoSouq Logo" />
           </Link>
         </div>
@@ -254,7 +254,7 @@ export const Navbar = () => {
           </div>
         )}
         {!currentUser && isOpen && (
-          <div className="  flex items-center justify-end w-full">
+          <div className="p-4 flex items-center gap-4 md:gap-2 justify-end w-full">
             {/* <span className="flex items-center justify-center ">
             <Link to="cart" className="navlink cart-icon absolute">
               <Icon icon={cart} className="cart" />
@@ -269,12 +269,12 @@ export const Navbar = () => {
             </Link>
           </span> */}
             <span className="">
-              <Link to="login" className="navlink sign-up">
+              <Link to="login" className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm">
                 LOGIN
               </Link>
             </span>
             <span className="">
-              <Link to="login" className="navlink login">
+              <Link to="login" className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm">
                 LOGIN AS DEALER
               </Link>
             </span>
