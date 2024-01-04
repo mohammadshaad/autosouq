@@ -245,14 +245,14 @@ function Dashboard() {
               Add Product
             </Link>
           </div>
-          <div className="group flex items-center justify-center">
+          {/* <div className="group flex items-center justify-center">
             <Link
               to="/addproducts"
               className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
             >
               Edit Product
             </Link>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="products-main-container !z-50">
