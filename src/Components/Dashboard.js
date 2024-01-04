@@ -218,7 +218,7 @@ function Dashboard() {
 
   return (
     <div className="flex items-center justify-center w-full h-full flex-col">
-      <div className=" return-to-home w-full flex items-center justify-between mt-10 px-4">
+      <div className=" return-to-home w-full flex items-center justify-between mt-10 px-14">
         <div className="group flex items-center justify-center">
           <Link
             to="/"
