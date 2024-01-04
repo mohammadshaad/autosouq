@@ -113,7 +113,7 @@ export const AddProducts = () => {
   return (
     <div className="container p-10 w-full">
       <br />
-      <div className=" return-to-home w-full flex items-center justify-between px-4 py-4">
+      <div className=" return-to-home w-full flex items-center justify-between py-4">
         <div className="group flex items-center justify-center">
           <Link
             to="/dashboard"
