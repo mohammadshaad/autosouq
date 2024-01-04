@@ -10,7 +10,7 @@ export const NotFound = () => {
         <div>
           <h1>OOPS! Page Not Found</h1>
         </div>
-        <Link to="/" className="pay-btn group !px-10 py-3 flex items-center justify-start w-full gap-4">
+        <Link to="/" className="sign-up group !px-10 py-3 flex items-center justify-start w-full gap-4">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
