@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { storage, db } from "../Config/Config";
+import { Link } from "react-router-dom";
 
 export const AddProducts = () => {
   const [productName, setProductName] = useState("");
@@ -110,8 +111,35 @@ export const AddProducts = () => {
   };
 
   return (
-    <div className="container p-10">
+    <div className="container p-10 w-full">
       <br />
+      <div className=" return-to-home w-full flex items-center justify-between px-4 py-4">
+        <div className="group flex items-center justify-center">
+          <Link
+            to="/dashboard"
+            className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mr-2 inline-block hover:text-[#17191b] duration-200 transition-all"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Dashboard
+          </Link>
+        </div>
+        <div className="group flex items-center justify-center">
+          <Link
+            to="/addproducts"
+            className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+          >
+            Edit Product
+          </Link>
+        </div>
+      </div>
       <h2>ADD PRODUCTS</h2>
       <hr />
       <form autoComplete="off" className="form-group" onSubmit={addProduct}>

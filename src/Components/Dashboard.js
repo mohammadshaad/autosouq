@@ -218,22 +218,42 @@ function Dashboard() {
 
   return (
     <div className="flex items-center justify-center w-full h-full flex-col">
-      <div className="group return-to-home w-full flex items-center justify-start mt-10 px-4">
-        <Link
-          to="/"
-          className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-6 w-6 mr-2 inline-block hover:text-[#17191b] duration-200 transition-all"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+      <div className=" return-to-home w-full flex items-center justify-between mt-10 px-4">
+        <div className="group flex items-center justify-center">
+          <Link
+            to="/"
+            className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
           >
-            <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-          </svg>
-          Home
-        </Link>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6 mr-2 inline-block hover:text-[#17191b] duration-200 transition-all"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            Home
+          </Link>
+        </div>
+        <div className=" flex items-center justify-center gap-10">
+          <div className="group flex items-center justify-center">
+            <Link
+              to="/addproducts"
+              className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+            >
+              Add Product
+            </Link>
+          </div>
+          <div className="group flex items-center justify-center">
+            <Link
+              to="/addproducts"
+              className="text-[#17191b]/50 group-hover:text-[#17191b] duration-200 transition-all no-underline decoration-white	 underline-offset-4 py-3"
+            >
+              Edit Product
+            </Link>
+          </div>
+        </div>
       </div>
       <div className="products-main-container !z-50">
         <div className="z-50 products-wrapper py-10">
