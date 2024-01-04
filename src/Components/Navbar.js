@@ -73,7 +73,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="navbox shadow-xl">
+    <div className="navbox shadow-xl z-50">
       {/* <div className="mobile-nav">
         <Link to="/" className="logo">
           <img src={logo} alt="AutoSouq Logo" />
@@ -180,9 +180,9 @@ export const Navbar = () => {
 
               {/* Dropdown */}
               {isDropdownOpen && (
-                <div className="origin-top-right absolute top-14 right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
+                <div className="origin-top-right absolute top-14 right-0 mt-2 w-48 z-50 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">
                   <div
-                    className="py-1"
+                    className="py-1 z-50"
                     role="menu"
                     aria-orientation="vertical"
                     aria-labelledby="options-menu"
@@ -205,7 +205,7 @@ export const Navbar = () => {
                     {role === "dealer" ? (
                       <Link
                         to="/dashboard"
-                        className="block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
+                        className=" block appearance-none hover:no-underline px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-lightOrange"
                         role="menuitem"
                       >
                         Dashboard
