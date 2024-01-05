@@ -773,7 +773,7 @@ function Dashboard() {
                           isOpen={modalIsOpen}
                           onRequestClose={closeModal}
                           contentLabel="Edit Product"
-                          className='!z-50 flex items-center justify-center flex-col'
+                          className="!z-50 flex items-center justify-center flex-col"
                         >
                           <h2>Edit Product</h2>
                           <form
@@ -788,6 +788,15 @@ function Dashboard() {
                                 type="text"
                                 name="ProductName"
                                 value={productDetails.ProductName}
+                                onChange={handleInputChange}
+                              />
+                            </label>
+                            <label>
+                              Product Type:
+                              <input
+                                type="text"
+                                name="ProductType"
+                                value={productDetails.ProductType}
                                 onChange={handleInputChange}
                               />
                             </label>
