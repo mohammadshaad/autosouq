@@ -45,6 +45,7 @@
   font-weight: 600;
 }
 
+/* Style for the navbar */
 @media (max-width: 768px) {
   .mybtn {
     width: 100%;
