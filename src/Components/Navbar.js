@@ -7,8 +7,10 @@ import { cart } from "react-icons-kit/entypo/cart";
 import { user } from "react-icons-kit/icomoon/user";
 import { useHistory } from "react-router-dom";
 import { CartContext } from "../Global/CartContext";
+import { useTranslation } from "react-i18next";
 
 export const Navbar = () => {
+  const { t } = useTranslation();
   const history = useHistory();
   const { totalQty } = useContext(CartContext);
   const [currentUser, setCurrentUser] = useState(null);
@@ -269,12 +271,18 @@ export const Navbar = () => {
             </Link>
           </span> */}
             <span className="">
-              <Link to="login" className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm">
+              <Link
+                to="login"
+                className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm"
+              >
                 LOGIN
               </Link>
             </span>
             <span className="">
-              <Link to="login" className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm">
+              <Link
+                to="login"
+                className="navlink sign-up !text-[10px] !px-4 !py-3 md:!text-sm"
+              >
                 LOGIN AS DEALER
               </Link>
             </span>

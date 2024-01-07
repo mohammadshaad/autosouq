@@ -21,6 +21,9 @@ import RefundPolicy from "./Components/RefundPolicy";
 import ShippingPolicy from "./Components/ShippingPolicy";
 import AdminDashboard from "./Components/Dashboard";
 import Profile from "./Components/Profile";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./i18n";
+
 export class App extends Component {
   state = {
     user: null,
@@ -51,79 +54,78 @@ export class App extends Component {
 
   render() {
     return (
-      <ProductsContextProvider>
-        <CartContextProvider>
-          <BrowserRouter>
-            <Switch>
-              {/* landing page */}
-              <Route
-                exact
-                path="/"
-                component={() => <Landing user={this.state.user} />}
-              />
+      <I18nextProvider i18n={i18n}>
+        <ProductsContextProvider>
+          <CartContextProvider>
+            <BrowserRouter>
+              <Switch>
+                {/* landing page */}
+                <Route
+                  exact
+                  path="/"
+                  component={() => <Landing user={this.state.user} />}
+                />
 
-              {/* products */}
-              <Route
-                path="/products"
-                component={() => <Home user={this.state.user} />}
-              />
-              {/* signup */}
-              <Route path="/signup" component={Signup} />
-              {/* login */}
-              <Route path="/login" component={Login} />
-              {/* cart products */}
-              <Route
-                path="/wishlist"
-                component={() => <Cart user={this.state.user} />}
-              />
-              {/* <Route
+                {/* products */}
+                <Route
+                  path="/products"
+                  component={() => <Home user={this.state.user} />}
+                />
+                {/* signup */}
+                <Route path="/signup" component={Signup} />
+                {/* login */}
+                <Route path="/login" component={Login} />
+                {/* cart products */}
+                <Route
+                  path="/wishlist"
+                  component={() => <Cart user={this.state.user} />}
+                />
+                {/* <Route
                 path="/payment"
                 component={() => <StripeContainer user={this.state.user} />}
               /> */}
-              <Route path="/payment" component={() => <Payment />} />
+                <Route path="/payment" component={() => <Payment />} />
 
-              {/* add products */}
-              <Route path="/addproducts" component={AddProducts} />
-              {/* cashout */}
-              {/* <Route
+                {/* add products */}
+                <Route path="/addproducts" component={AddProducts} />
+                {/* cashout */}
+                {/* <Route
                 path="/cashout"
                 component={() => <Cashout user={this.state.user} />}
               /> */}
-              <Route
-                path="/privacy-policy"
-                component={() => <PrivacyPolicy />}
-              />
-              <Route
-                path="/terms-of-service"
-                component={() => <TermsofService />}
-              />
-              <Route path="/contact-us" component={() => <Support />} />
-              <Route path="/refund-policy" component={() => <RefundPolicy />} />
-              <Route
-                path="/shipping-policy"
-                component={() => <ShippingPolicy />}
-              />
-              <Route
-                path="/profile"
-                component={() => <Profile />}
-              />
-              <Route
-                path="/success/:paymentId"
-                component={() => <Success />}
-              />
-              {/* <Route
+                <Route
+                  path="/privacy-policy"
+                  component={() => <PrivacyPolicy />}
+                />
+                <Route
+                  path="/terms-of-service"
+                  component={() => <TermsofService />}
+                />
+                <Route path="/contact-us" component={() => <Support />} />
+                <Route
+                  path="/refund-policy"
+                  component={() => <RefundPolicy />}
+                />
+                <Route
+                  path="/shipping-policy"
+                  component={() => <ShippingPolicy />}
+                />
+                <Route path="/profile" component={() => <Profile />} />
+                <Route
+                  path="/success/:paymentId"
+                  component={() => <Success />}
+                />
+                {/* <Route
                 path="/success"
                 component={() => <Success />} 
               /> */}
-              <Route
-                path="/dashboard"
-                component={() => <AdminDashboard />}
-              />
-              <Route component={NotFound} />
-            </Switch>
-          </BrowserRouter>
-        </CartContextProvider>
-      </ProductsContextProvider>
+                <Route path="/dashboard" component={() => <AdminDashboard />} />
+                <Route component={NotFound} />
+              </Switch>
+            </BrowserRouter>
+          </CartContextProvider>
+        </ProductsContextProvider>
+      </I18nextProvider>
     );
   }
 }
