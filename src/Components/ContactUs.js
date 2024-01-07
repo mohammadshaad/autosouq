@@ -24,7 +24,7 @@ function RefundPolicy() {
             <div className="font-light text-sm md:text-base leading-relaxed text-justify mt-2 flex flex-col items-start justify-center gap-2">
               <div>You may contact us using the information below:</div>
 
-              <div>Merchant Legal entity name: Enactus VIT Chennai</div>
+              <div>Merchant Legal entity name: AutoSouq</div>
 
               <div>
                 Registered Address: Kelambakkam - Vandalur Rd, Rajan Nagar,

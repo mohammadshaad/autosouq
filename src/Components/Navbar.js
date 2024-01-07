@@ -38,7 +38,7 @@ export const Navbar = () => {
               console.log(
                 "Hey " +
                   userData.Name +
-                  "! 👋 Welcome to Enactus VITC E-Commerce Site ❤️ " +
+                  "! 👋 Welcome to AutoSouq ❤️ " +
                   "You are logged in now!" +
                   "Your email : " +
                   userData.Email +

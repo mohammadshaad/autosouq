@@ -53,7 +53,7 @@
     "@types/react-router-dom": "^5.3.3",
     "tailwindcss": "^3.3.2"
   },
-  "description": "Welcome to the official GitHub repository of Enactus VIT Chennai! 🚀",
+  "description": "Welcome to the official GitHub repository of AutoSouq! 🚀",
   "main": "tailwind.config.js",
   "author": "",
   "license": "ISC"

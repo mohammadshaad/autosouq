@@ -12,14 +12,13 @@ import Loading from "./Loading";
 // Check if Firebase app is not already initialized
 if (!firebase.apps.length) {
   firebase.initializeApp({
-    apiKey: "AIzaSyCWt5sgt3WvQ4GjEiOezyZrK13ODaSYPaQ",
-    authDomain: "enactus-ecommerce-e840f.firebaseapp.com",
-    databaseURL: "https://enactus-ecommerce-e840f-default-rtdb.firebaseio.com",
-    projectId: "enactus-ecommerce-e840f",
-    storageBucket: "enactus-ecommerce-e840f.appspot.com",
-    messagingSenderId: "1050946403575",
-    appId: "1:1050946403575:web:501c9e8be00165d5aca7f2",
-    measurementId: "G-F9JF3VY4R2",
+    apiKey: "AIzaSyAn985OSJZM2_6dqh0jdIjMh4otodIo0hw",
+    authDomain: "autosouq-4de0c.firebaseapp.com",
+    databaseURL: "https://autosouq-4de0c-default-rtdb.firebaseio.com",
+    projectId: "autosouq-4de0c",
+    storageBucket: "autosouq-4de0c.appspot.com",
+    messagingSenderId: "141757253112",
+    appId: "1:141757253112:web:c225c34a12afc33434c20d",
   });
 }
 
