@@ -82,34 +82,42 @@ export const Navbar = () => {
         </Link>
 
         <div className="menu-buttons z-50" onClick={toggleMenu}>
-          {!isOpen ? (
+          {!isMenuOpen ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              fill="none"
               viewBox="0 0 24 24"
-              className={`menu-icon `}
+              stroke="currentColor"
+              className="h-6 w-6 text-gray-500"
             >
-              <rect x="2" y="5" width="20" height="2" />
-              <rect x="2" y="11" width="18" height="2" />
-              <rect x="2" y="17" width="16" height="2" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 6h16M4 12h16M4 18h16"
+              />
             </svg>
           ) : (
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
+              fill="none"
               viewBox="0 0 24 24"
-              className={`menu-icon `}
+              stroke="currentColor"
+              className="h-6 w-6 text-gray-500"
             >
-              <path d="M19.59 6L12 13.59L4.41 6L3 7.41L10.59 15L3 22.59L4.41 24L12 16.41L19.59 24L21 22.59L13.41 15L21 7.41L19.59 6Z" />
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
             </svg>
           )}
         </div>
       </div>
 
-      <div className="flex items-center justify-center w-full md:p-4 ">
-        <div className="desktop-nav-menu hidden md:flex items-center justify-center ">
+      <div className="flex items-center justify-center w-full md:!p-4 ">
+        <div className="hidden md:flex items-center justify-center ">
           <Link to="/" className="logo">
             <img src={logo} alt="AutoSouq Logo" />
           </Link>
@@ -214,7 +222,7 @@ export const Navbar = () => {
           </div>
         )} */}
 
-        {!currentUser && isOpen && (
+        {!currentUser && (
           <div className="flex items-center gap-4 md:gap-2 justify-end w-full ">
             {(isMenuOpen || window.innerWidth > 768) && (
               <div className="flex items-start justify-center md:justify-end md:px-4 flex-col md:flex-row gap-6  w-full ">
