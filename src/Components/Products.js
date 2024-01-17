@@ -214,6 +214,7 @@ export const Products = () => {
       product,
     });
   };
+  
 
   return (
     <div className="products-main-container !z-50">
